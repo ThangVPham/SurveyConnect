@@ -1,0 +1,99 @@
+{
+    "surveyName":"ASL Survey",
+    "surveyOwner":"63d9e3eaee30c5b882f5592f",
+    "organization":"Liu Yang",
+    "surveyType":"Academic",
+    "description":"Basic Logo-syllabic Chinese Character",
+    "activeStatus":true,
+    "dateEnd": "12-31-2023",
+    "public":false,
+    "accessCode":"ASL2023",
+    "instructionMessage":"",
+    "questions":[
+        {"questionType":"CustomUserInfo","question":"Please enter your information.",
+        "options":[],
+        "correctOption":null,
+        "imgURL":[],
+        "imgDesc":[]
+       },
+        {"questionType":"MC","question":"Are you identified as Deaf, Hard of Hearing, or Hearing?",
+        "options":["Deaf","Hard of Hearing","Hearing"],
+        "correctOption":null,
+        "imgURL":[],
+        "imgDesc":[]
+       },
+        {"questionType":"Other","question":"Below is a Logo-Syllabic Chinese Character with definition. Have a look. When you're done, you can proceed to the next section.","options":[],"correctOption":null,"imgURL":["https://i.imgur.com/6CyNV6g.jpg"],"imgDesc":["person"]},
+
+        
+        {"questionType":"Other","question":"Below is a Logo-Syllabic Chinese Character with definition. Have a look. When you're done, you can proceed to the next section.","options":[],"correctOption":null,"imgURL":["https://i.imgur.com/WujZRrN.jpg"],"imgDesc":["wood; tree"]},
+
+
+        {"questionType":"Other","question":"Below is a Logo-Syllabic Chinese Character with definition. Have a look. When you're done, you can proceed to the next section.","options":[],"correctOption":null,"imgURL":["https://i.imgur.com/iTvZdGk.jpg"],"imgDesc":["mouth"]},
+
+
+        {"questionType":"Other","question":"Below is a Logo-Syllabic Chinese Character with definition. Have a look. When you're done, you can proceed to the next section.","options":[],"correctOption":null,"imgURL":["https://i.imgur.com/jlAqcGX.jpg"],"imgDesc":["field; agriculture"]},
+
+
+        {"questionType":"Other","question":"Below is a Logo-Syllabic Chinese Character with definition. Have a look. When you're done, you can proceed to the next section.","options":[],"correctOption":null,"imgURL":["https://i.imgur.com/BiuP4Pe.jpg"],"imgDesc":["house; shelter"]},
+
+
+        {"questionType":"Other","question":"Below is a Logo-Syllabic Chinese Character with definition. Have a look. When you're done, you can proceed to the next section.","options":[],"correctOption":null,"imgURL":["https://i.imgur.com/264VEeX.jpg"],"imgDesc":["sun; the sun"]},
+
+
+        {"questionType":"Other","question":"Below is a Logo-Syllabic Chinese Character with definition. Have a look. When you're done, you can proceed to the next section.","options":[],"correctOption":null,"imgURL":["https://i.imgur.com/KhSJBJH.jpg"],"imgDesc":["river"]},
+
+
+        {"questionType":"Other","question":"Below is a Logo-Syllabic Chinese Character with definition. Have a look. When you're done, you can proceed to the next section.","options":[],"correctOption":null,"imgURL":["https://i.imgur.com/WW69Doh.jpg"],"imgDesc":["mountain; hill"]},
+
+
+        {"questionType":"Other","question":"Below is a Logo-Syllabic Chinese Character with definition. Have a look. When you're done, you can proceed to the next section.","options":[],"correctOption":null,"imgURL":["https://i.imgur.com/4xxiBlQ.jpg"],"imgDesc":["feather; wings (of birds)"]},
+
+
+        {"questionType":"Other","question":"Below is a Logo-Syllabic Chinese Character with definition. Have a look. When you're done, you can proceed to the next section.","options":[],"correctOption":null,"imgURL":["https://i.imgur.com/mEkz5Wx.jpg"],"imgDesc":["goat; sheep"]},
+
+
+        {"questionType":"Other","question":"Below is a Logo-Syllabic Chinese Character with definition. Have a look. When you're done, you can proceed to the next section.","options":[],"correctOption":null,"imgURL":["https://i.imgur.com/v5S99SC.jpg"],"imgDesc":["up; above"]},
+
+
+        {"questionType":"Other","question":"Below is a Logo-Syllabic Chinese Character with definition. Have a look. When you're done, you can proceed to the next section.","options":[],"correctOption":null,"imgURL":["https://i.imgur.com/9klFOgY.jpg"],"imgDesc":["middle; center"]},
+
+
+        {"questionType":"Other","question":"Below is a Logo-Syllabic Chinese Character with definition. Have a look. When you're done, you can proceed to the next section.","options":[],"correctOption":null,"imgURL":["https://i.imgur.com/F4h5WX3.jpg"],"imgDesc":["down"]},
+
+
+        {"questionType":"Other","question":"Below is a Logo-Syllabic Chinese Character with definition. Have a look. When you're done, you can proceed to the next section.","options":[],"correctOption":null,"imgURL":["https://i.imgur.com/Cds1VnD.jpg"],"imgDesc":["to string together; connect; skewer (food)"]},
+
+
+        {"questionType":"Other","question":"Below is a Logo-Syllabic Chinese Character with definition. Have a look. When you're done, you can proceed to the next section.","options":[],"correctOption":null,"imgURL":["https://i.imgur.com/kkLVMPb.jpg"],"imgDesc":["protrusion; bulge"]},
+
+
+        {"questionType":"Other","question":"Below is a Logo-Syllabic Chinese Character with definition. Have a look. When you're done, you can proceed to the next section.","options":[],"correctOption":null,"imgURL":["https://i.imgur.com/E85Thwk.jpg"],"imgDesc":["indentation; sunken"]},
+
+
+        {"questionType":"Other","question":"Below is a Logo-Syllabic Chinese Character with definition. Have a look. When you're done, you can proceed to the next section.","options":[],"correctOption":null,"imgURL":["https://i.imgur.com/SBsEcea.jpg"],"imgDesc":["power; strong"]},
+
+
+        {"questionType":"Short Answer","question":"Below are some Chinese characters. Please take a look at the character(s) with definition, and make the best guess of the rest of the characters.","options":[],"correctOption":null,"imgURL":["https://i.imgur.com/lOxR9Yt.jpg","https://i.imgur.com/WvM5xW3.jpg","https://i.imgur.com/jcmrJg9.jpg"],"imgDesc":["person; individual"]},
+
+
+        {"questionType":"Short Answer","question":"Below are some Chinese characters. Please take a look at the character(s) with definition, and make the best guess of the rest of the characters.","options":[],"correctOption":null,"imgURL":["https://i.imgur.com/fn9Bfgj.jpg","https://i.imgur.com/OmqSFUc.jpg","https://i.imgur.com/BYPClK1.jpg"],"imgDesc":["fire"]},
+
+
+        {"questionType":"Short Answer","question":"Below are some Chinese characters. Please take a look at the character(s) with definition, and make the best guess of the rest of the characters.","options":[],"correctOption":null,"imgURL":["https://i.imgur.com/yl1rraf.jpg","https://i.imgur.com/LCwhqGi.jpg"],"imgDesc":["mouth"]},
+
+        
+        {"questionType":"Short Answer","question":"Below are some Chinese characters. Please take a look at the character(s) with definition, and make the best guess of the rest of the characters.","options":[],"correctOption":null,"imgURL":["https://i.imgur.com/0BUUeR9.jpg","https://i.imgur.com/j9DaNZe.jpg"],"imgDesc":["sun"]},
+
+
+        {"questionType":"Short Answer","question":"Below are some Chinese characters. Please take a look at the character(s) with definition, and make the best guess of the rest of the characters.","options":[],"correctOption":null,"imgURL":["https://i.imgur.com/iaEd6vW.jpg","https://i.imgur.com/WVKZAvy.jpg","https://i.imgur.com/KBvpPbn.jpg"],"imgDesc":["sun","moon"]},
+
+
+        {"questionType":"Short Answer","question":"Below are some Chinese characters. Please take a look at the character(s) with definition, and make the best guess of the rest of the characters.","options":[],"correctOption":null,"imgURL":["https://i.imgur.com/OIIrdDu.jpg","https://i.imgur.com/8UIq0Ge.jpg"],"imgDesc":["knife; blade"]},
+
+
+        {"questionType":"Short Answer","question":"Below are some Chinese characters. Please take a look at the character(s) with definition, and make the best guess of the rest of the characters.","options":[],"correctOption":null,"imgURL":["https://i.imgur.com/oyeIt5i.jpg","https://i.imgur.com/dslAqwv.jpg"],"imgDesc":["person; individual"]},
+
+
+        {"questionType":"Short Answer","question":"Below are some Chinese characters. Please take a look at the character(s) with definition, and make the best guess of the rest of the characters.","options":[],"correctOption":null,"imgURL":["https://i.imgur.com/WujZRrN.jpg","https://i.imgur.com/vzPDelL.jpg"],"imgDesc":["wood; tree"]}]
+    }
+    

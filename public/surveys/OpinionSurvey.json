@@ -1,0 +1,39 @@
+{
+    "surveyName":"Product Awareness",
+    "surveyOwner":"63d9e3eaee30c5b882f5592f",
+    "organization":"Market Research Foundation",
+    "surveyType":"Market",
+    "description":"Good survey questions will help your business acquire the right information to drive growth. Surveys can be made up of different types of questions. Each type has a unique approach to gathering data",
+    "activeStatus":false,
+    "dateEnd": "12-31-2022",
+    "instructionMessage":"",
+    "questions":[
+        {"questionType":"Long Feedback","question":"What can you tell us about yourself? (Your age, gender, hobbies, interests, and anything else you’re willing to share)",
+        "options":[],
+        "correctOption":null,
+        "imgURL":[],
+        "imgDesc":[]
+       },
+        {"questionType":"Long Feedback","question":"What has kept you from signing up for our newsletter? ","options":[],"correctOption":null,"imgURL":[],"imgDesc":[]},
+
+        
+        {"questionType":"MC","question":"Which of the following are you most likely to read?","options":["a series of blog posts"," a novel","the daily news", " I don’t read on a regular basis"],"correctOption":null,"imgURL":[],"imgDesc":[]},
+
+
+        {"questionType":"MC","question":" What do you think about our customer service?","options":["It’s exceptional","It’s OK","Could be better","It’s terrible "],"correctOption":null,"imgURL":[],"imgDesc":[]},
+
+
+        {"questionType":"Checkbox","question":"Which of the following products do you purchase regularly at our store? (select up to 5 answers)","options":["Whole-grain rice","Gluten-free noodles","Soy milk", "Suger-free soft drinks","Lactose-free ice cream"],"correctOption":null,"imgURL":[],"imgDesc":[]},
+
+
+        {"questionType":"MC","question":"Do you have experience working with Google Analytics?","options":["Yes","No"],"correctOption":null,"imgURL":[],"imgDesc":[]},
+
+
+        {"questionType":"MC","question":"Google Analytics has a steep learning curve for the average user","options":["Yes","No"],"correctOption":null,"imgURL":[],"imgDesc":[]},
+
+
+        {"questionType":"MC","question":"How do you commute to work","options":["Car","Bus","Train","Walk","Other"],"correctOption":null,"imgURL":[],"imgDesc":[]}
+
+
+    ]
+    }
