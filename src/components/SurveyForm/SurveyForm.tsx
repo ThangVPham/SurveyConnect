@@ -104,9 +104,6 @@ function SurveyForm({ surveyName, questions }: Survey) {
             />
           </div>
         )}
-        <p className="absolute bottom-4 text-xs">
-          Powered by <i>Survey Connect&#169;. </i> All rights reserved {new Date().getFullYear().toString()}
-        </p>
       </div>
       <div className="flex gap-10 mt-10">
         <button

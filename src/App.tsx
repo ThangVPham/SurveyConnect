@@ -17,7 +17,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
   return (
     <div className={darkMode ? "dark" : ""}>
-      <div className="dark:bg-slate-900 h-screen bg-slate-200 dark:text-slate-200 transition-all duration-200">
+      <div className="dark:bg-gradient-to-tr dark:from-[#172A46] dark:via-[#0F2746] dark:to-[#11386E] bg-gradient-to-r h-screen bg-slate-200 dark:text-slate-200 transition-all duration-200">
         <Router>
           <NavBar
             darkMode={darkMode}

@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import SurveyForm from "../components/SurveyForm/SurveyForm";
 import surveys from "../../public/surveys/surveys.json";
+import Footer from "../components/Footer";
 interface Survey {
   id: string;
   surveyName: string;
@@ -41,11 +42,12 @@ function SurveyQuestions() {
       localStorageSurvey = fetchedSurvey;
     }
   }
-  console.log(localStorageSurvey);
 
   return (
-    <div>
+    <div className="flex flex-col items-center ">
       <SurveyForm surveyName={localStorageSurvey.surveyName} questions={localStorageSurvey.questions}></SurveyForm>
+
+      <Footer></Footer>
     </div>
   );
 }
