@@ -28,7 +28,7 @@ function SurveyForm({ surveyName, questions }: Survey) {
   const [questionNumber, setQuestionNumber] = useState(0);
   return (
     <div className="flex flex-col w-full items-center justify-center  ">
-      <div className="flex flex-col mt-10 md:w-1/2 w-3/4 items-center h-[400px] dark:bg-slate-800 rounded-2xl shadow-2xl p-5">
+      <div className="flex flex-col mt-10 md:w-1/2 w-3/4 items-center h-[400px] dark:bg-slate-800 rounded-2xl shadow-2xl p-5 ">
         <h3 className="text-xl">{surveyName}</h3>
         <h5 className="text-sm">
           Question {questionNumber + 1} of {questions.length}

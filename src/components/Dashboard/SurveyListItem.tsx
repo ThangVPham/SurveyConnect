@@ -13,7 +13,7 @@ interface SurveyItem {
 
 function SurveyListItem({ id, surveyName, organization, dateEnd }: SurveyItem) {
   return (
-    <div className="my-5 bg-slate-100 shadow-xl dark:bg-gray-950 rounded-xl py-5 px-4 ">
+    <div className="my-5 bg-slate-100 shadow-xl dark:bg-slate-900 rounded-xl py-5 px-4 ">
       <div className="w-full flex justify-between items-top md:text-sm text-center text-xs font-semibold text-slate-600 dark:text-slate-200">
         <div className="xl:w-32 w-20">
           <p>Name</p>
@@ -41,7 +41,7 @@ function SurveyListItem({ id, surveyName, organization, dateEnd }: SurveyItem) {
         <div className="flex items-center">
           <Link
             to={`/surveydetail/${id}`}
-            className="font-light border bg-green-600 border-green-600 py-1 px-5 rounded-2xl text-white hover:bg-slate-200 hover:text-slate-800 dark:bg-transparent dark:border-slate-400 dark:hover:text-cyan-600 dark:hover:border-cyan-600"
+            className="font-light border bg-green-600 border-green-600 py-1 px-5 rounded-2xl text-white hover:bg-slate-200 hover:text-slate-800 dark:bg-transparent dark:border-slate-400 dark:hover:text-cyan-600 dark:hover:border-cyan-600 text-xs"
           >
             View
           </Link>

@@ -3,7 +3,7 @@ import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 function LoginForm() {
   return (
-    <div className="w-96 xl:w-1/4 flex flex-col h-5/7 border-transparet rounded-2xl p-10 dark:bg-[#172A46] shadow-2xl bg-slate-900/80 text-sky-100   mx-auto mt-32 ">
+    <div className="w-96 xl:w-1/4 flex flex-col h-5/7 border-transparet rounded-2xl p-10 dark:bg-[#172A46] shadow-2xl bg-green-700 text-sky-100   mx-auto mt-32 ">
       <form action="" className="flex flex-col w-full gap-2 bg-opacity-10">
         <p className="text-end  text-sm">
           Don't have an account yet?{" "}
