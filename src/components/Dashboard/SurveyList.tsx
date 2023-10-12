@@ -1,11 +1,11 @@
-import SingleSurvey from "./SingleSurvey";
+import SurveyListItem from "./SurveyListItem";
 import surveys from "../../../public/surveys/surveys.json";
 function SurveyList() {
   return (
     <div>
       {surveys.map((survey) => {
         return (
-          <SingleSurvey
+          <SurveyListItem
             key={survey.id}
             id={survey.id}
             surveyName={survey.surveyName}
@@ -13,9 +13,7 @@ function SurveyList() {
             description={survey.description}
             activeStatus={false}
             dateEnd={survey.dateEnd}
-            instructionMessage={survey.instructionMessage}
-            questions={survey.questions}
-          ></SingleSurvey>
+          ></SurveyListItem>
         );
       })}
     </div>

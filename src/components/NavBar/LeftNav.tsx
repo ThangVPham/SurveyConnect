@@ -1,5 +1,8 @@
 import { NavLink } from "react-router-dom";
-function LeftNav() {
+interface LeftNavProp {
+  isLoggedIn: boolean;
+}
+function LeftNav({ isLoggedIn }: LeftNavProp) {
   return (
     <div className="hidden md:flex gap-5 h-full justify-center items-center dark:text-slate-300">
       <NavLink
@@ -42,6 +45,18 @@ function LeftNav() {
       >
         Contact
       </NavLink>
+      {isLoggedIn && (
+        <NavLink
+          to={"/dashboard"}
+          className={({ isActive }) => {
+            return isActive
+              ? "text-green-600 border-green-600 pt-1 border-b-4 h-full flex items-center justify-center dark:text-cyan-300 dark:border-cyan-300  lg:w-20"
+              : "h-full flex items-center justify-center hover:text-green-600 hover:border-b-4 border-green-600 dark:hover:border-slate-200 dark:hover:text-slate-200 lg:w-20";
+          }}
+        >
+          Dashboard
+        </NavLink>
+      )}
     </div>
   );
 }

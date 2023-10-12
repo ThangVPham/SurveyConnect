@@ -5,7 +5,7 @@ interface DarkModeType {
 function ToggleDarkModeButton({ darkMode, toggleDarkMode }: DarkModeType) {
   return (
     <div
-      className=" items-center relative hidden md:flex"
+      className=" items-center relative flex cursor-pointer"
       onClick={() => {
         toggleDarkMode();
       }}

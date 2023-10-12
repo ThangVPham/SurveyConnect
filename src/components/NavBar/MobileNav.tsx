@@ -10,8 +10,8 @@ function MobileNav({ mobileToggled, toggleMobileNav }: MobileNavPropType) {
     <nav
       className={
         mobileToggled
-          ? "block text-slate-200 absolute text-center w-full md:hidden transition-translate duration-200 top-0 bg-green-700 dark:bg-slate-900 bg-opacity-90 "
-          : "block text-slate-200 absolute text-center w-full md:hidden transition-translate duration-200 top-[-400px]"
+          ? "block text-slate-200 absolute text-center w-full md:hidden transition-translate duration-500 top-0 bg-green-700 bg-opacity-90 dark:bg-slate-900  dark:bg-opacity-90"
+          : "block text-slate-200 absolute text-center w-full md:hidden transition-translate duration-500 top-[-400px]"
       }
     >
       <ul className="pt-16 pb-5" onClick={() => toggleMobileNav()}>
@@ -22,11 +22,12 @@ function MobileNav({ mobileToggled, toggleMobileNav }: MobileNavPropType) {
           >
             Home
           </Link>
+
           <FontAwesomeIcon
             icon={faTimes}
             fontWeight="bold"
             fontSize={36}
-            className="absolute right-6 top-5 cursor-pointer hover:text-green-900 dark:hover:text-cyan-300"
+            className="absolute right-10 top-5 cursor-pointer hover:text-green-900 dark:hover:text-cyan-300"
             onClick={() => {
               toggleMobileNav();
             }}

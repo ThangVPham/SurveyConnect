@@ -7,14 +7,16 @@ import MobileNav from "./MobileNav";
 interface DarkModeType {
   darkMode: boolean;
   toggleDarkMode: () => void;
+  isLoggedIn: boolean;
+  setIsLoggedIn: () => void;
 }
-function NavBar({ darkMode, toggleDarkMode }: DarkModeType) {
+function NavBar({ darkMode, toggleDarkMode, isLoggedIn, setIsLoggedIn }: DarkModeType) {
   const [toggleMobileNavState, setToggleMobileNavState] = useState(false);
-
   return (
     <nav className="flex justify-between items-center h-20 shadow-2xl gap-5 dark:bg-slate-800">
       <SurveyConnectLogo darkMode={darkMode} />
-      <LeftNav />
+      <LeftNav isLoggedIn={isLoggedIn} />
+
       <div className="flex gap-5">
         <ToggleDarkModeButton darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
         <RightNav
@@ -22,6 +24,8 @@ function NavBar({ darkMode, toggleDarkMode }: DarkModeType) {
           toggleMobileNav={() => {
             setToggleMobileNavState(!toggleMobileNavState);
           }}
+          isLoggedIn={isLoggedIn}
+          setIsLoggedIn={() => setIsLoggedIn()}
         />
       </div>
       <MobileNav
