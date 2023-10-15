@@ -14,7 +14,7 @@ function RightNav({ toggleMobileNavState, toggleMobileNav, isLoggedIn, setIsLogg
         <div className="hidden md:flex gap-5 items-center mr-5 text-sm h-full">
           <Link
             to={"/"}
-            className="bg-green-600 flex px-2 py-1 justify-center rounded-3xl text-white border border-green-600 hover:text-green-600 hover:bg-slate-200  dark:bg-slate-800 dark:border-none dark:hover:bg-white dark:hover:text-slate-800"
+            className="bg-green-600 md:flex hidden justify-center px-2 py-1 rounded-3xl text-white border border-green-600 hover:text-green-600 hover:bg-slate-100  dark:bg-transparent dark:border-cyan-700 dark:hover:bg-white dark:hover:text-slate-800 text-sm transiton-bg duration-200"
             onClick={() => {
               setIsLoggedIn();
             }}
@@ -23,7 +23,7 @@ function RightNav({ toggleMobileNavState, toggleMobileNav, isLoggedIn, setIsLogg
           </Link>
           <Link
             to={"/signup"}
-            className="bg-green-600 flex px-2 py-1 justify-center rounded-3xl text-white border border-green-600 hover:text-green-600 hover:bg-slate-200  dark:bg-slate-800 dark:border-none dark:hover:bg-white dark:hover:text-slate-800"
+            className="bg-green-600 md:flex hidden justify-center px-2 py-1 rounded-3xl text-white border border-green-600 hover:text-green-600 hover:bg-slate-100  dark:bg-transparent dark:border-cyan-700 dark:hover:bg-white dark:hover:text-slate-800 text-sm transiton-bg duration-200"
           >
             Sign Up
           </Link>
@@ -32,7 +32,7 @@ function RightNav({ toggleMobileNavState, toggleMobileNav, isLoggedIn, setIsLogg
       {isLoggedIn && (
         <Link
           to={"/"}
-          className="bg-green-600 md:flex hidden justify-center px-2 py-1 rounded-3xl text-white border border-green-600 hover:text-green-600 hover:bg-slate-100  dark:bg-slate-800 dark:border-none dark:hover:bg-white dark:hover:text-slate-800 text-sm"
+          className="bg-green-600 md:flex hidden justify-center px-2 py-1 rounded-3xl text-white border border-green-600 hover:text-green-600 hover:bg-slate-100  dark:bg-transparent dark:border-cyan-700 dark:hover:bg-white dark:hover:text-slate-800 text-sm transiton-bg duration-200"
           onClick={() => {
             setIsLoggedIn();
           }}

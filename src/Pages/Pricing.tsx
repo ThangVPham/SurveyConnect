@@ -1,9 +1,8 @@
-import React from "react";
-
+import PricingComponent from "../components/PricingComponent";
 function Pricing() {
   return (
-    <div>
-      <h1>Pricing</h1>
+    <div className="h-full">
+      <PricingComponent></PricingComponent>
     </div>
   );
 }

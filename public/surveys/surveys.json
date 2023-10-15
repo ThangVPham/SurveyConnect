@@ -1,13 +1,12 @@
 [
   {
-    "id": "1",
     "surveyName": "Social Media Survey Questions",
     "surveyOwner": "63d9e3eaee30c5b882f5592f",
     "organization": "American Psychology Assiciation",
     "surveyType": "Socio-Economics",
     "description": "This sample survey template consists of questions that gather information about people's social media usage. Our team of experts designs this survey questionnaire on social media after carefully calibrating the attributes and personalities of people.",
     "activeStatus": true,
-    "dateEnd": "12-31-2024",
+    "dateEnd": "2024-12-31",
     "instructionMessage": "",
     "questions": [
       {
@@ -168,14 +167,13 @@
     ]
   },
   {
-    "id": "2",
     "surveyName": "Science Knowledge Quiz",
     "surveyOwner": "63d9e3eaee30c5b882f5592f",
     "organization": "Buzzfeed",
     "surveyType": "Academic",
     "description": "Test your knowledge of science facts and applications of scientific principles by taking our 11-question quiz. When you finish, you will be able to compare your scores with the average American and compare responses across demographic groups. Our nationally representative poll of 4,464 randomly selected U.S. adults was conducted on Pew Research Center's American Trends Panel between Jan. 7 and Jan. 21, 2019. The analysis of the findings from the poll can be found in the full report, “What Americans Know About Science.”",
     "activeStatus": true,
-    "dateEnd": "12-31-2024",
+    "dateEnd": "2024-12-31",
     "instructionMessage": "",
     "questions": [
       {
@@ -309,14 +307,13 @@
     ]
   },
   {
-    "id": "3",
     "surveyName": "Product Awareness",
     "surveyOwner": "63d9e3eaee30c5b882f5592f",
     "organization": "Market Research Foundation",
     "surveyType": "Market",
     "description": "Good survey questions will help your business acquire the right information to drive growth. Surveys can be made up of different types of questions. Each type has a unique approach to gathering data",
     "activeStatus": false,
-    "dateEnd": "12-31-2022",
+    "dateEnd": "2022-12-31",
     "instructionMessage": "",
     "questions": [
       {
@@ -398,14 +395,13 @@
     ]
   },
   {
-    "id": "4",
     "surveyName": "Market Research Product",
     "surveyOwner": "63d9e3eaee30c5b882f5592f",
     "organization": "Survey Monkey",
     "surveyType": "Market",
     "description": "The Market Research Product Survey is your go-to solution for gathering essential insights from customers and industry experts. This user-friendly tool is designed to help businesses refine their products and services by uncovering customer preferences, analyzing market trends, and assessing competitive strengths and weaknesses. With tailored questions, demographic insights, and expert data analysis, it's the key to informed decision-making and staying ahead in today's dynamic market.",
     "activeStatus": false,
-    "dateEnd": "12-31-2022",
+    "dateEnd": "2022-12-31",
     "instructionMessage": "",
     "questions": [
       {

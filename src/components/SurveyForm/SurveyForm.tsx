@@ -1,6 +1,16 @@
 import { useState } from "react";
+import { BtnDebounce } from "../../util/BtnDebounce";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome } from "@fortawesome/free-solid-svg-icons";
+import { Link, useParams } from "react-router-dom";
+import { useFetch } from "../../util/useFetch";
 interface Survey {
+  _id: string;
   surveyName: string;
+  organization: string;
+  description: string;
+  activeStatus: boolean;
+  dateEnd: string;
   questions: Question[];
 }
 interface Question {
@@ -23,22 +33,35 @@ enum QuestionType {
   CHECK_BOX = "Checkbox",
   LONG_FEEDBACK = "Long Feedback",
 }
-function SurveyForm({ surveyName, questions }: Survey) {
+
+const SURVEY_BASE_URL = "http://localhost:5000/api/survey";
+function SurveyForm() {
   //   const [answer, setAnswer] = useState<Answer>({ name: "", email: "", answers: [] });
+  const { id } = useParams();
+  const { data: survey } = useFetch<Survey>(SURVEY_BASE_URL + `/${id}`);
   const [questionNumber, setQuestionNumber] = useState(0);
+  const surveyLength = survey?.questions.length || Number.POSITIVE_INFINITY;
+  function nextQ() {
+    console.log("here");
+    setQuestionNumber(questionNumber + 1);
+  }
+  function prevQ() {
+    setQuestionNumber(questionNumber - 1);
+  }
+
   return (
     <div className="flex flex-col w-full items-center justify-center  ">
       <div className="flex flex-col mt-10 md:w-1/2 w-3/4 items-center h-[400px] dark:bg-slate-800 rounded-2xl shadow-2xl p-5 ">
-        <h3 className="text-xl">{surveyName}</h3>
+        <h3 className="text-xl">{survey?.surveyName}</h3>
         <h5 className="text-sm">
-          Question {questionNumber + 1} of {questions.length}
+          Question {questionNumber + 1} of {survey?.questions.length}
         </h5>
         <p className="w-full border-b-2 mb-5 pb-5">
-          Q{questionNumber + 1}. {questions[questionNumber].question}
+          Q{questionNumber + 1}. {survey?.questions[questionNumber].question}
         </p>
-        {questions[questionNumber].questionType === QuestionType.MULTIPLE_CHOICE && (
+        {survey?.questions[questionNumber].questionType === QuestionType.MULTIPLE_CHOICE && (
           <div className="flex flex-col flex-wrap items-start w-5/6">
-            {questions[questionNumber].options.map((option) => {
+            {survey.questions[questionNumber].options.map((option) => {
               return (
                 <div key={option}>
                   <input
@@ -61,9 +84,9 @@ function SurveyForm({ surveyName, questions }: Survey) {
           </div>
         )}
 
-        {questions[questionNumber].questionType === QuestionType.CHECK_BOX && (
+        {survey?.questions[questionNumber].questionType === QuestionType.CHECK_BOX && (
           <div className="flex flex-col flex-wrap items-start w-5/6">
-            {questions[questionNumber].options.map((option) => {
+            {survey?.questions[questionNumber].options.map((option) => {
               return (
                 <div key={option}>
                   <input
@@ -85,7 +108,7 @@ function SurveyForm({ surveyName, questions }: Survey) {
             })}
           </div>
         )}
-        {questions[questionNumber].questionType === QuestionType.SHORT_ANSWER && (
+        {survey?.questions[questionNumber].questionType === QuestionType.SHORT_ANSWER && (
           <div>
             <input
               type="text"
@@ -94,23 +117,27 @@ function SurveyForm({ surveyName, questions }: Survey) {
             />
           </div>
         )}
-        {questions[questionNumber].questionType === QuestionType.LONG_FEEDBACK && (
-          <div>
+        {survey?.questions[questionNumber].questionType === QuestionType.LONG_FEEDBACK && (
+          <div className="overflow-y-hidden w-full">
             <textarea
-              className="bg-stone-100 rounded-lg px-4 dark:bg-slate-700 outline-none p-2"
-              cols={80}
-              rows={5}
+              className="bg-stone-100 rounded-lg px-4 dark:bg-slate-700 outline-none p-2 w-full resize-none"
               placeholder="Type answer here"
             />
           </div>
         )}
+        <div className="mt-20">
+          <Link to={"/dashboard"}>
+            <FontAwesomeIcon icon={faHome} />
+          </Link>
+        </div>
       </div>
       <div className="flex gap-10 mt-10">
         <button
           className="w-28 bg-green-600 px-5 py-2 rounded-3xl text-xs h-full my-auto text-white dark:text-slate-300 border border-green-600  hover:text-green-600 hover:bg-white dark:bg-slate-800 dark:border-none dark:hover:bg-slate-100 dark:hover:text-slate-800 lg:text-base "
           onClick={() => {
             if (questionNumber > 0) {
-              setQuestionNumber(questionNumber - 1);
+              const cb = prevQ;
+              BtnDebounce({ cb });
             }
           }}
         >
@@ -119,8 +146,9 @@ function SurveyForm({ surveyName, questions }: Survey) {
         <button
           className="w-28 bg-green-600 px-5 py-2 rounded-3xl text-xs h-full my-auto text-white dark:text-slate-300 border border-green-600  hover:text-green-600 hover:bg-white dark:bg-slate-800 dark:border-none dark:hover:bg-slate-100 dark:hover:text-slate-800 lg:text-base "
           onClick={() => {
-            if (questionNumber < questions.length - 1) {
-              setQuestionNumber(questionNumber + 1);
+            if (questionNumber < surveyLength - 1) {
+              const cb = nextQ;
+              BtnDebounce({ cb });
             }
           }}
         >

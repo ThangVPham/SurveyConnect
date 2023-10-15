@@ -2,16 +2,17 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 interface MobileNavPropType {
+  isLoggedIn: boolean;
   mobileToggled: boolean;
   toggleMobileNav: () => void;
 }
-function MobileNav({ mobileToggled, toggleMobileNav }: MobileNavPropType) {
+function MobileNav({ isLoggedIn, mobileToggled, toggleMobileNav }: MobileNavPropType) {
   return (
     <nav
       className={
         mobileToggled
-          ? "block text-slate-200 absolute text-center w-full md:hidden transition-translate duration-500 top-0 bg-green-700 bg-opacity-90 dark:bg-slate-900  dark:bg-opacity-90"
-          : "block text-slate-200 absolute text-center w-full md:hidden transition-translate duration-500 top-[-400px]"
+          ? "block text-slate-200 absolute text-center w-full md:hidden transition-translate duration-500 top-0 bg-green-700 bg-opacity-90 dark:bg-slate-900  dark:bg-opacity-90 z-50"
+          : "block text-slate-200 absolute text-center w-full md:hidden transition-translate duration-500 top-[-400px] z-0"
       }
     >
       <ul className="pt-16 pb-5" onClick={() => toggleMobileNav()}>
@@ -22,7 +23,6 @@ function MobileNav({ mobileToggled, toggleMobileNav }: MobileNavPropType) {
           >
             Home
           </Link>
-
           <FontAwesomeIcon
             icon={faTimes}
             fontWeight="bold"
@@ -33,6 +33,11 @@ function MobileNav({ mobileToggled, toggleMobileNav }: MobileNavPropType) {
             }}
           />
         </li>
+        {isLoggedIn && (
+          <li className="h-10 flex justify-center items-center hover:text-green-900 hover:bg-slate-200 dark:hover:bg-slate-800 dark:hover:text-cyan-300">
+            <Link to={"/dashboard"}>Dashboard</Link>
+          </li>
+        )}
         <li className="h-10 flex justify-center items-center hover:text-green-900 hover:bg-slate-200 dark:hover:bg-slate-800 dark:hover:text-cyan-300">
           <Link to={"/about"}>About</Link>
         </li>
