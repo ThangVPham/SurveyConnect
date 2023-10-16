@@ -37,7 +37,7 @@ function LoginForm({ setLogIn }: ILoginForm) {
     if (response.status === 400) {
       setMsg(data.message);
       clearMsg();
-    } else {
+    } else if (response.status === 200) {
       localStorage.setItem("token", data.token);
       setLogIn();
       setSuccess(true);
@@ -45,6 +45,8 @@ function LoginForm({ setLogIn }: ILoginForm) {
       setTimeout(() => {
         navigate("/dashboard");
       }, 1500);
+    } else {
+      setMsg("Unable to process request. Please try again later");
     }
   }
   return (
@@ -52,7 +54,7 @@ function LoginForm({ setLogIn }: ILoginForm) {
       <div className=" flex justify-center items-centers mt-28 h-24">
         <img src="../../../public/SCWhite.svg" alt="Survey Connect logo" />
       </div>
-      <div className="w-96 xl:w-1/4 flex flex-col border-transparet rounded-2xl p-10 dark:bg-[#172A46] shadow-2xl bg-slate-900/50 text-sky-100 mx-auto  relative pt-20 overflow-hidden">
+      <div className="w-11/12 sm:w-96 xl:w-1/4 flex flex-col border-transparet rounded-2xl p-10 dark:bg-[#172A46] shadow-2xl bg-slate-900/50 text-sky-100 mx-auto  relative pt-20 overflow-hidden">
         <div
           className={
             msg
