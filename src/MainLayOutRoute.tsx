@@ -13,12 +13,12 @@ interface MainLayOutRouteProp {
   darkMode: boolean;
   setDarkMode: () => void;
   isLoggedIn: boolean;
-  setIsLoggedIn: () => void;
+  logOut: () => void;
 }
-function MainLayOutRoute({ darkMode, setDarkMode, isLoggedIn, setIsLoggedIn }: MainLayOutRouteProp) {
+function MainLayOutRoute({ darkMode, setDarkMode, isLoggedIn, logOut }: MainLayOutRouteProp) {
   return (
     <div className="h-screen overflow-hidden relative">
-      <NavBar darkMode={darkMode} toggleDarkMode={setDarkMode} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+      <NavBar darkMode={darkMode} toggleDarkMode={setDarkMode} isLoggedIn={isLoggedIn} logOut={logOut} />
       <Routes>
         <Route path="/" element={<Home isLoggedIn={isLoggedIn} />}></Route>
         <Route path="/about" element={<About />}></Route>

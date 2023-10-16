@@ -34,7 +34,7 @@ enum QuestionType {
   LONG_FEEDBACK = "Long Feedback",
 }
 
-const SURVEY_BASE_URL = "http://localhost:5000/api/survey";
+const SURVEY_BASE_URL = "http://localhost:5000/api/surveys";
 function SurveyForm() {
   //   const [answer, setAnswer] = useState<Answer>({ name: "", email: "", answers: [] });
   const { id } = useParams();
@@ -51,7 +51,7 @@ function SurveyForm() {
 
   return (
     <div className="flex flex-col w-full items-center justify-center  ">
-      <div className="flex flex-col mt-10 md:w-1/2 w-3/4 items-center h-[400px] dark:bg-slate-800 rounded-2xl shadow-2xl p-5 ">
+      <div className="flex flex-col mt-40 lg:mt-20 md:w-1/2 w-11/12 items-center min-h-[400px] dark:bg-slate-800 rounded-2xl shadow-2xl p-5 ">
         <h3 className="text-xl">{survey?.surveyName}</h3>
         <h5 className="text-sm">
           Question {questionNumber + 1} of {survey?.questions.length}
@@ -125,7 +125,7 @@ function SurveyForm() {
             />
           </div>
         )}
-        <div className="mt-20">
+        <div className="">
           <Link to={"/dashboard"}>
             <FontAwesomeIcon icon={faHome} />
           </Link>

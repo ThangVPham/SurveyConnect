@@ -1,12 +1,14 @@
 import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 interface MobileNavPropType {
   isLoggedIn: boolean;
+  logOut: () => void;
   mobileToggled: boolean;
   toggleMobileNav: () => void;
 }
-function MobileNav({ isLoggedIn, mobileToggled, toggleMobileNav }: MobileNavPropType) {
+function MobileNav({ isLoggedIn, mobileToggled, toggleMobileNav, logOut }: MobileNavPropType) {
+  const navigate = useNavigate();
   return (
     <nav
       className={
@@ -47,6 +49,27 @@ function MobileNav({ isLoggedIn, mobileToggled, toggleMobileNav }: MobileNavProp
         <li className="h-10 flex justify-center items-center hover:text-green-900 hover:bg-slate-200 dark:hover:bg-slate-800 dark:hover:text-cyan-300">
           <Link to={"/contact"}>Contact</Link>
         </li>
+        {!isLoggedIn && (
+          <li className="h-10 flex justify-center items-center hover:text-green-900 hover:bg-slate-200 dark:hover:bg-slate-800 dark:hover:text-cyan-300">
+            <Link to={"/login"}>Login</Link>
+          </li>
+        )}
+        {!isLoggedIn && (
+          <li className="h-10 flex justify-center items-center hover:text-green-900 hover:bg-slate-200 dark:hover:bg-slate-800 dark:hover:text-cyan-300">
+            <Link to={"/signup"}>Sign Up</Link>
+          </li>
+        )}
+        {isLoggedIn && (
+          <li
+            className="h-10 flex justify-center items-center hover:text-green-900 hover:bg-slate-200 dark:hover:bg-slate-800 dark:hover:text-cyan-300 hover:cursor-pointer"
+            onClick={() => {
+              logOut();
+              navigate("/");
+            }}
+          >
+            <span>Logout</span>
+          </li>
+        )}
       </ul>
     </nav>
   );

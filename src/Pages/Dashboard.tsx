@@ -1,7 +1,9 @@
 // import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import DashNav from "../components/Dashboard/DashNav";
 import SurveyList from "../components/Dashboard/SurveyList";
 import { useFetch } from "../util/useFetch";
+import { useEffect } from "react";
 const SURVEYS_URL = "http://localhost:5000/api";
 interface SurveyList {
   surveys: SurveyItem[];
@@ -25,9 +27,14 @@ interface Question {
 }
 function Dashboard() {
   const { data: surveys, loading, error } = useFetch<SurveyItem[]>(SURVEYS_URL + "/surveys");
-  if (surveys) {
-    localStorage.setItem("surveys", JSON.stringify(surveys));
-  }
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    const loginToken = localStorage.getItem("token");
+    if (!loginToken) {
+      navigate("/login");
+    }
+  }, []);
   return (
     <div className="dark:text-slate-200 md:w-2/3 mx-auto w-5/6 h-full">
       <DashNav></DashNav>

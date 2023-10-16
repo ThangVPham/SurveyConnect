@@ -23,7 +23,7 @@ const SURVEY_BASE_URL = "http://localhost:5000/api";
 function SurveyDetail() {
   const { id } = useParams();
 
-  const { data: survey, loading, error } = useFetch<SurveyItem>(SURVEY_BASE_URL + `/survey/${id}`);
+  const { data: survey, loading, error } = useFetch<SurveyItem>(SURVEY_BASE_URL + `/surveys/${id}`);
 
   return (
     <div>

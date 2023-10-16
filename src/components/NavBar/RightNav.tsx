@@ -5,19 +5,16 @@ interface RightNavPropType {
   toggleMobileNavState: boolean;
   toggleMobileNav: () => void;
   isLoggedIn: boolean;
-  setIsLoggedIn: () => void;
+  logOut: () => void;
 }
-function RightNav({ toggleMobileNavState, toggleMobileNav, isLoggedIn, setIsLoggedIn }: RightNavPropType) {
+function RightNav({ toggleMobileNavState, toggleMobileNav, isLoggedIn, logOut }: RightNavPropType) {
   return (
     <div className="  mr-5 text-center">
       {!isLoggedIn && (
         <div className="hidden md:flex gap-5 items-center mr-5 text-sm h-full">
           <Link
-            to={"/"}
+            to={"/login"}
             className="bg-green-600 md:flex hidden justify-center px-2 py-1 rounded-3xl text-white border border-green-600 hover:text-green-600 hover:bg-slate-100  dark:bg-transparent dark:border-cyan-700 dark:hover:bg-white dark:hover:text-slate-800 text-sm transiton-bg duration-200"
-            onClick={() => {
-              setIsLoggedIn();
-            }}
           >
             Login
           </Link>
@@ -34,7 +31,8 @@ function RightNav({ toggleMobileNavState, toggleMobileNav, isLoggedIn, setIsLogg
           to={"/"}
           className="bg-green-600 md:flex hidden justify-center px-2 py-1 rounded-3xl text-white border border-green-600 hover:text-green-600 hover:bg-slate-100  dark:bg-transparent dark:border-cyan-700 dark:hover:bg-white dark:hover:text-slate-800 text-sm transiton-bg duration-200"
           onClick={() => {
-            setIsLoggedIn();
+            localStorage.removeItem("token");
+            logOut();
           }}
         >
           Log Out
