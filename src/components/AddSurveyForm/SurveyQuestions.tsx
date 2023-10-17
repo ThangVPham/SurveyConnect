@@ -1,5 +1,5 @@
 import React from "react";
-import SingleQuesiton from "../SingleQuesiton";
+import SingleQuesiton from "./SingleQuesiton";
 interface ISurveyQuestions {
   questions: IQuestion[];
   setQuestions: React.Dispatch<React.SetStateAction<IQuestion[]>>;

@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, HashRouter } from "react-router-dom";
 import { useState } from "react";
 import SurveyQuestions from "./Pages/SurveyQuestions.tsx";
 import MainLayOutRoute from "./MainLayOutRoute.tsx";
@@ -15,7 +15,7 @@ function App() {
   return (
     <div className={darkMode ? "dark" : ""}>
       <div className="dark:bg-gradient-to-tr dark:from-[#172A46] dark:via-[#0F2746] dark:to-[#11386E] bg-gradient-to-r min-h-screen bg-slate-200 dark:text-slate-200 transition-all duration-200">
-        <Router>
+        <HashRouter>
           <Routes>
             <Route
               path="*"
@@ -36,7 +36,7 @@ function App() {
             <Route path="/signup" element={<Signup setLogIn={() => setIsLoggedIn(true)} />}></Route>
             <Route path="/surveyform/:id" element={<SurveyQuestions />}></Route>
           </Routes>
-        </Router>
+        </HashRouter>
       </div>
     </div>
   );
