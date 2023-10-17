@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route, HashRouter } from "react-router-dom";
+import { Routes, Route, HashRouter } from "react-router-dom";
 import { useState } from "react";
 import SurveyQuestions from "./Pages/SurveyQuestions.tsx";
 import MainLayOutRoute from "./MainLayOutRoute.tsx";
