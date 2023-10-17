@@ -5,7 +5,7 @@ interface HomeProp {
 function Home({ isLoggedIn }: HomeProp) {
   return (
     <div className="block md:my-0 my-16 w-full md:flex  md:justify-center md:items-center  h-full">
-      <div className="w-4/5 mx-auto md:mx-0 md:w-1/3 flex flex-col items-center gap-8 md:gap-10 text-center pb-8 dark:text-slate-300">
+      <div className="w-4/5 mx-auto md:mx-0 md:w-1/3 flex flex-col items-center gap-8 md:gap-10 text-center pb-8 dark:text-slate-300 md:my-40 xl:my-48">
         <h3 className="text-xl text-green-600 font-medium dark:text-cyan-400">Build, Create, Connect</h3>
         <h1 className="text-5xl font-semibold">Ask the questions that matter!</h1>
         <p>Connect with your customers. Get the answers you need with Survey Connect.</p>

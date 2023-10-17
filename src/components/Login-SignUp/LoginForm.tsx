@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faHome } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-
+// import { LOGIN_API } from "../../API/Api";
 interface ILoginInfo {
   email: string;
   password: string;
@@ -10,8 +10,9 @@ interface ILoginInfo {
 interface ILoginForm {
   setLogIn: () => void;
 }
-const LOGIN_URL = "http://localhost:5000/api/user/login";
+const LOGIN_API = "http://localhost:5000/api/user/login";
 function LoginForm({ setLogIn }: ILoginForm) {
+  const [loading, setLoading] = useState(false);
   const [revealPassword, setRevealPassword] = useState(false);
   const [loginInfo, setLoginInfo] = useState<ILoginInfo>({ email: "", password: "" });
   const [success, setSuccess] = useState(false);
@@ -25,28 +26,34 @@ function LoginForm({ setLogIn }: ILoginForm) {
   async function SubmitLogin(e: React.SyntheticEvent) {
     e.preventDefault();
     const content = JSON.stringify(loginInfo);
-    const response = await fetch(LOGIN_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: content,
-    });
+    try {
+      setLoading(true);
+      const response = await fetch(LOGIN_API, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: content,
+      });
 
-    const data = await response.json();
-    if (response.status === 400) {
-      setMsg(data.message);
-      clearMsg();
-    } else if (response.status === 200) {
-      localStorage.setItem("token", data.token);
-      setLogIn();
-      setSuccess(true);
-      setMsg(data.message);
-      setTimeout(() => {
-        navigate("/dashboard");
-      }, 1500);
-    } else {
-      setMsg("Unable to process request. Please try again later");
+      const data = await response.json();
+      setLoading(false);
+      if (response.status === 400) {
+        setMsg(data.message);
+        clearMsg();
+      } else if (response.status === 200) {
+        localStorage.setItem("token", data.token);
+        setLogIn();
+        setSuccess(true);
+        setMsg(data.message);
+        setTimeout(() => {
+          navigate("/dashboard");
+        }, 1500);
+      } else {
+        setMsg("Unable to process request. Please try again later");
+      }
+    } catch (e) {
+      console.log(e);
     }
   }
   return (
@@ -157,7 +164,7 @@ function LoginForm({ setLogIn }: ILoginForm) {
             className="w-full bg-zinc-900/75 h-10  flex justify-center items-center hover:cursor-pointer"
             onClick={(e) => SubmitLogin(e)}
           >
-            {success ? (
+            {loading ? (
               <img src="../../../public/loading-gif.gif" className="w-[25px]" alt="loading"></img>
             ) : (
               <span>Log In</span>

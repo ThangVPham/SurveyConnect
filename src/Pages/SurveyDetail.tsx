@@ -1,5 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { useFetch } from "../util/useFetch";
+// import { SURVEY_API } from "../API/Api";
 interface SurveyItem {
   _id: string;
   surveyName: string;
@@ -18,12 +19,12 @@ interface Question {
   imgDesc: string[];
 }
 
-const SURVEY_BASE_URL = "http://localhost:5000/api";
+const SURVEY_API = "http://localhost:5000/api/surveys";
 
 function SurveyDetail() {
   const { id } = useParams();
 
-  const { data: survey, loading, error } = useFetch<SurveyItem>(SURVEY_BASE_URL + `/surveys/${id}`);
+  const { data: survey, loading, error } = useFetch<SurveyItem>(SURVEY_API + `/${id}`);
 
   return (
     <div>
@@ -41,7 +42,7 @@ function SurveyDetail() {
               <i>By: {survey?.organization}</i>
             </h4>
             <h4>
-              <i>End Date: {survey?.dateEnd}</i>
+              <i>End Date: {survey?.dateEnd.slice(0, 10)}</i>
             </h4>
           </div>
           <div className="flex flex-col xl:w-2/3 gap-10 items-center">

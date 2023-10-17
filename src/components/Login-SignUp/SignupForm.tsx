@@ -2,14 +2,15 @@ import { Link, useNavigate } from "react-router-dom";
 import { faEye, faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-// import { useState } from "react";
+// import { REGISTER_API } from "../../API/Api";
 interface ISignupForm {
   setLogIn: () => void;
 }
-const REGISTER_URL = "http://localhost:5000/api/user/register";
+const REGISTER_API = "http://localhost:5000/api/user/register";
 function SignupForm({ setLogIn }: ISignupForm) {
   const [passwordReveal, setPasswordReveal] = useState({ password: false, confirmPassword: false });
   const [msg, setMsg] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [userInfo, setUserInfo] = useState({ email: "", password: "", confirmPassword: "", termsOfUse: false });
   const navigate = useNavigate();
@@ -31,16 +32,17 @@ function SignupForm({ setLogIn }: ISignupForm) {
       return;
     }
     const { email, password } = userInfo;
-
-    const response = await fetch(REGISTER_URL, {
+    setLoading(true);
+    const response = await fetch(REGISTER_API, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ email, password }),
     });
-
+    setLoading(false);
     const data = await response.json();
+
     if (response.status === 400) {
       setMsg(data.message);
       clearMsg();
@@ -64,7 +66,7 @@ function SignupForm({ setLogIn }: ISignupForm) {
       <div className="w-full h-16 flex justify-center">
         <img src="../../../public/SCWhite.svg" alt="Survey Connect logo" />
       </div>
-      <div className="w-11/12 sm:w-96 xl:w-1/3 2xl:w-1/4 border-transparent rounded-2xl p-10 dark:bg-[#172A46] shadow-2xl bg-slate-900/50">
+      <div className="w-11/12 md:w-1/2 xl:w-1/3 2xl:w-1/4 border-transparent rounded-2xl p-10 dark:bg-[#172A46] shadow-2xl bg-slate-900/50">
         <form className="flex flex-col w-full pt-10 relative overflow-x-hidden overflow-y-visible">
           <div
             className={
@@ -83,8 +85,8 @@ function SignupForm({ setLogIn }: ISignupForm) {
               <div
                 className={
                   success
-                    ? "text-green-700 rounded-full bg-white mr-3 dark:text-slate-200"
-                    : "text-red-700 rounded-full bg-white mr-3 dark:text-slate-200"
+                    ? "text-green-700 rounded-full bg-white mr-3 dark:text-cyan-700"
+                    : "text-red-700 rounded-full bg-white mr-3 dark:text-red-700"
                 }
               >
                 <svg
@@ -149,7 +151,7 @@ function SignupForm({ setLogIn }: ISignupForm) {
               />
               <div
                 style={{ color: "#1A2629" }}
-                className="bg-white rounded-r-xl outline-0 pr-5 h-9 mb-3 w-1/12 "
+                className="bg-white rounded-r-xl outline-0 pt-2 pr-5 h-9 mb-3 w-1/12 "
                 onClick={() => {
                   setPasswordReveal((prevState) => {
                     return { ...prevState, password: !prevState.password };
@@ -215,7 +217,7 @@ function SignupForm({ setLogIn }: ISignupForm) {
             className="w-full bg-zinc-900/75 h-10  hover:cursor-pointer flex justify-center items-center"
             onClick={(e) => onSubmitForm(e)}
           >
-            {success ? (
+            {loading ? (
               <img src="../../../public/loading-gif.gif" className="w-[25px]" alt="loading" />
             ) : (
               <span>Create Account</span>

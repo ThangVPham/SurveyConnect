@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 function DashNav() {
   const [currentTab, setCurrentTab] = useState<string>("All");
   return (
@@ -44,10 +47,16 @@ function DashNav() {
           Expired
         </button>
       </div>
-      <div className="sm:my-auto  w-full lg:w-64 my-5">
+      <div className="flex justify-between md:justify-end md:items-center w-full gap-2 lg:gap-10 py-2 hover:">
+        <Link
+          to={"/newsurvey"}
+          className="text-xs lg:text-sm border border-1 border-green-600 dark:border-cyan-700 py-2 px-1 rounded-3xl w-24 lg:w-32 text-center flex justify-center items-center hover:cursor-pointer bg-green-600 dark:bg-transparent transition-bg duration-300 text-white  hover:font-medium  hover:text-green-700 dark:hover:text-slate-900 dark:hover:bg-white hover:bg-white"
+        >
+          <FontAwesomeIcon icon={faPlus} className="mr-2 hidden lg:block"></FontAwesomeIcon>New Survey
+        </Link>
         <input
           type="text"
-          className=" h-8 w-full lg:w-64  bg-stone-100 rounded-2xl px-4 dark:bg-slate-700 outline-none "
+          className=" h-8 w-3/4 lg:w-64  bg-stone-100 rounded-2xl px-4 dark:bg-slate-700 outline-none col-span-4"
           placeholder="Search..."
         />
       </div>

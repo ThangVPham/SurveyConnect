@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { BtnDebounce } from "../../util/BtnDebounce";
+import { Debounce } from "../../util/Debounce";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { Link, useParams } from "react-router-dom";
 import { useFetch } from "../../util/useFetch";
+// import { SURVEY_API } from "../../API/Api";
 interface Survey {
   _id: string;
   surveyName: string;
@@ -34,11 +35,11 @@ enum QuestionType {
   LONG_FEEDBACK = "Long Feedback",
 }
 
-const SURVEY_BASE_URL = "http://localhost:5000/api/surveys";
+const SURVEY_API = "http://localhost:5000/api/surveys";
 function SurveyForm() {
   //   const [answer, setAnswer] = useState<Answer>({ name: "", email: "", answers: [] });
   const { id } = useParams();
-  const { data: survey } = useFetch<Survey>(SURVEY_BASE_URL + `/${id}`);
+  const { data: survey } = useFetch<Survey>(SURVEY_API + `/${id}`);
   const [questionNumber, setQuestionNumber] = useState(0);
   const surveyLength = survey?.questions.length || Number.POSITIVE_INFINITY;
   function nextQ() {
@@ -137,7 +138,7 @@ function SurveyForm() {
           onClick={() => {
             if (questionNumber > 0) {
               const cb = prevQ;
-              BtnDebounce({ cb });
+              Debounce({ cb });
             }
           }}
         >
@@ -148,7 +149,7 @@ function SurveyForm() {
           onClick={() => {
             if (questionNumber < surveyLength - 1) {
               const cb = nextQ;
-              BtnDebounce({ cb });
+              Debounce({ cb });
             }
           }}
         >

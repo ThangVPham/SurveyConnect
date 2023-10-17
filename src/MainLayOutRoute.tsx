@@ -6,8 +6,8 @@ import Contact from "./Pages/Contact";
 
 import Dashboard from "./Pages/Dashboard";
 import SurveyDetail from "./Pages/SurveyDetail";
-// import SurveyQuestions from "./Pages/SurveyQuestions";
 import NavBar from "./components/NavBar/NavBar";
+import NewSurvey from "./Pages/NewSurvey";
 
 interface MainLayOutRouteProp {
   darkMode: boolean;
@@ -17,7 +17,7 @@ interface MainLayOutRouteProp {
 }
 function MainLayOutRoute({ darkMode, setDarkMode, isLoggedIn, logOut }: MainLayOutRouteProp) {
   return (
-    <div className="h-screen overflow-hidden relative">
+    <div className="min-h-screen overflow-hidden relative">
       <NavBar darkMode={darkMode} toggleDarkMode={setDarkMode} isLoggedIn={isLoggedIn} logOut={logOut} />
       <Routes>
         <Route path="/" element={<Home isLoggedIn={isLoggedIn} />}></Route>
@@ -26,6 +26,7 @@ function MainLayOutRoute({ darkMode, setDarkMode, isLoggedIn, logOut }: MainLayO
         <Route path="/contact" element={<Contact />}></Route>
         <Route path="/dashboard" element={<Dashboard />}></Route>
         <Route path="/surveydetail/:id" element={<SurveyDetail />}></Route>
+        <Route path="/newsurvey" element={<NewSurvey />}></Route>
       </Routes>
     </div>
   );
