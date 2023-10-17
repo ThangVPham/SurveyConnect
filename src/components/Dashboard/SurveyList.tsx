@@ -22,23 +22,30 @@ interface Question {
   imgURL: string[];
   imgDesc: string[];
 }
-function SurveyList({ surveys }: SurveyListProps) {
+function SurveyList({ surveys, loading }: SurveyListProps) {
   return (
     <div>
-      {surveys?.map((survey) => {
-        return (
-          <SurveyListItem
-            key={survey._id}
-            _id={survey._id}
-            surveyName={survey.surveyName}
-            organization={survey.organization}
-            description={survey.description}
-            activeStatus={true}
-            dateEnd={survey.dateEnd}
-            questions={survey.questions}
-          ></SurveyListItem>
-        );
-      })}
+      {!loading &&
+        surveys?.map((survey) => {
+          return (
+            <SurveyListItem
+              key={survey._id}
+              _id={survey._id}
+              surveyName={survey.surveyName}
+              organization={survey.organization}
+              description={survey.description}
+              activeStatus={true}
+              dateEnd={survey.dateEnd}
+              questions={survey.questions}
+            ></SurveyListItem>
+          );
+        })}
+      {loading && (
+        <div className="flex flex-col items-center justify-center gap-2 h-96">
+          <img src="./assets/loading-gif.gif" alt="Loading GIF" className="w-[25px]" />
+          <p>Loading</p>
+        </div>
+      )}
     </div>
   );
 }

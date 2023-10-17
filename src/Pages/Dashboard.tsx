@@ -39,7 +39,7 @@ function Dashboard() {
   return (
     <div className="dark:text-slate-200 md:w-2/3 mx-auto w-5/6 h-full">
       <DashNav></DashNav>
-      <SurveyList surveys={surveys} loading={loading} error={error}></SurveyList>
+      <SurveyList surveys={surveys} loading={loading} error={error} />
     </div>
   );
 }

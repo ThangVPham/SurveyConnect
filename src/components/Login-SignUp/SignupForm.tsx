@@ -6,6 +6,9 @@ import { REGISTER_API } from "../../API/Api";
 interface ISignupForm {
   setLogIn: () => void;
 }
+const emailRegex =
+  /^([a-zA-Z0-9_\-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9-]+.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+
 // const REGISTER_API = "http://localhost:5000/api/user/register";
 function SignupForm({ setLogIn }: ISignupForm) {
   const [passwordReveal, setPasswordReveal] = useState({ password: false, confirmPassword: false });
@@ -32,6 +35,17 @@ function SignupForm({ setLogIn }: ISignupForm) {
       return;
     }
     const { email, password } = userInfo;
+    const regexPass = emailRegex.test(email);
+    if (!regexPass) {
+      setMsg("Invalid email. Please try again.");
+      clearMsg();
+      return;
+    }
+    if (password.length < 5) {
+      setMsg("Password must be at least 5-character long.");
+      clearMsg();
+      return;
+    }
     setLoading(true);
     const response = await fetch(REGISTER_API, {
       method: "POST",
