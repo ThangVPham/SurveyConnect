@@ -25,9 +25,9 @@ function App() {
                   setDarkMode={() => setDarkMode((prevState) => !prevState)}
                   isLoggedIn={isLoggedIn}
                   logOut={() => {
-                    console.log("logout");
-                    setIsLoggedIn(false);
                     localStorage.removeItem("token");
+                    setIsLoggedIn(false);
+                    console.log("User Logged Out Succcessfully");
                   }}
                 />
               }

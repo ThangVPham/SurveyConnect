@@ -40,9 +40,9 @@ function SignupForm({ setLogIn }: ISignupForm) {
       },
       body: JSON.stringify({ email, password }),
     });
-    setLoading(false);
-    const data = await response.json();
 
+    const data = await response.json();
+    setLoading(false);
     if (response.status === 400) {
       setMsg(data.message);
       clearMsg();

@@ -43,7 +43,6 @@ function SurveyForm() {
   const [questionNumber, setQuestionNumber] = useState(0);
   const surveyLength = survey?.questions.length || Number.POSITIVE_INFINITY;
   function nextQ() {
-    console.log("here");
     setQuestionNumber(questionNumber + 1);
   }
   function prevQ() {

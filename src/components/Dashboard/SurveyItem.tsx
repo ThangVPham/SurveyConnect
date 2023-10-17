@@ -32,7 +32,6 @@ function SurveyItem({ _id, surveyName, organization, dateEnd, activeStatus }: Su
     setTimeout(() => {
       setCopiedNotification(false);
     }, 2000);
-    console.log("done");
   }
 
   return (

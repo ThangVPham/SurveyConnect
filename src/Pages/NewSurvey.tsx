@@ -55,16 +55,20 @@ function NewSurvey() {
     questions: questions,
   });
   async function SubmitSurvey() {
-    const response = await fetch(SURVEY_POST_API, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-      body: JSON.stringify(survey),
-    });
-    const data = await response.json();
-    console.log(data);
+    try {
+      const response = await fetch(SURVEY_POST_API, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify(survey),
+      });
+      const data = await response.json();
+      console.log(data);
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   useEffect(() => {
@@ -73,7 +77,6 @@ function NewSurvey() {
     });
   }, [questions]);
   const [otherSelected, setOtherSelected] = useState(false);
-  console.log(survey);
   id++; //To ensure ID is unique (only goes up) for each question
   return (
     <div className="w-full lg:flex block ">

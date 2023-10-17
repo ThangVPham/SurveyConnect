@@ -35,7 +35,6 @@ function SingleQuesiton({ q, index, setQuestions }: ISingleQuestion) {
           value={question.questionType}
           onChange={(e) => {
             setQuestion((prevState: IQuestion) => {
-              console.log("setQuestion");
               return { ...prevState, questionType: e.target.value };
             });
           }}

@@ -23,6 +23,7 @@ function LoginForm({ setLogIn }: ILoginForm) {
       setMsg(null);
     }, 4000);
   }
+  console.log(success);
   async function SubmitLogin(e: React.SyntheticEvent) {
     e.preventDefault();
     const content = JSON.stringify(loginInfo);
@@ -50,7 +51,7 @@ function LoginForm({ setLogIn }: ILoginForm) {
           navigate("/dashboard");
         }, 1500);
       } else {
-        setMsg("Unable to process request. Please try again later");
+        setMsg(data.message);
       }
     } catch (e) {
       console.log(e);
@@ -76,7 +77,11 @@ function LoginForm({ setLogIn }: ILoginForm) {
                 : "flex items-center  border-l-4   py-2 px-3 shadow-md mb-2 bg-[#972a2a] border-red-500"
             }
           >
-            <div className="text-green-600 rounded-full bg-white mr-3 dark:text-slate-200">
+            <div
+              className={
+                success ? "text-green-600 rounded-full bg-white mr-3 " : " rounded-full bg-white mr-3 text-red-700"
+              }
+            >
               <svg
                 width="1.8em"
                 height="1.8em"
