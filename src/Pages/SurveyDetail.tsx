@@ -46,7 +46,11 @@ function SurveyDetail() {
             </h4>
           </div>
           <div className="flex flex-col xl:w-2/3 gap-10 items-center">
-            <img src="../../public/survey_animation.gif" alt="" className="w-2/3  lg:w-1/3 2xl:w-1/3 rounded-full" />
+            <img
+              src="./assets/survey_animation.gif"
+              alt="Animation Logo"
+              className="w-2/3  lg:w-1/3 2xl:w-1/3 rounded-full"
+            />
             <div className="xl:w-1/2 flex flex-col gap-2 text-start text-lg">
               <h3 className="font-semibold">Survey Infomation:</h3>
               <p className="text-sm"> {survey?.description}</p>
