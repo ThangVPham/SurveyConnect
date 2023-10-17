@@ -15,7 +15,7 @@ interface ISurvey {
   activeStatus: boolean;
   dateEnd: string;
   instructionMessage: string;
-  response: IResponse[];
+  responses: IResponse[];
   questions: IQuestion[];
 }
 interface IQuestion {
@@ -35,7 +35,7 @@ function SurveyInfo({ setSurvey, setOtherSelected, otherSelected, id, setQuestio
   return (
     <div className="lg:w-1/3 lg:border-r-2 border-gray-600 dark:border-slate-400 border-b-2 lg:border-b-0 w-full min-h-screen">
       <div className="flex flex-col items-center justify-start w-full lg:w-1/3 lg:fixed">
-        <div className=" w-11/12 max-full flex  mt-10 ">
+        <div className=" w-full max-full flex  mt-10 ">
           <div className="w-11/12 flex flex-col rounded-lg dark:border-slate-200 border-green-600   border-t-4 shadow-2xl border-t-6 items-start justify-center mx-auto gap-8 p-4 mb-4 bg-white dark:bg-transparent">
             <div className="flex flex-col gap-4 w-full">
               <input

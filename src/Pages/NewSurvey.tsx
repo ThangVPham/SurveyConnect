@@ -13,7 +13,7 @@ interface ISurvey {
   activeStatus: boolean;
   dateEnd: string;
   instructionMessage: string;
-  response: IResponse[];
+  responses: IResponse[];
   questions: IQuestion[];
 }
 interface IQuestion {
@@ -36,7 +36,7 @@ function NewSurvey() {
     if (!localStorage.getItem("token")) {
       navigate("/login");
     }
-  });
+  }, []);
   const [questions, setQuestions] = useState<IQuestion[]>([
     { questionType: "MC", question: "", options: [""], correctOption: "", imgDesc: [""], imgURL: [""], id: id },
   ]);
@@ -44,12 +44,12 @@ function NewSurvey() {
     surveyName: "",
     surveyOwner: "",
     organization: "",
-    surveyType: "",
+    surveyType: "MC",
     description: "",
     activeStatus: true,
     dateEnd: "",
     instructionMessage: "",
-    response: [],
+    responses: [],
     questions: questions,
   });
   useEffect(() => {
@@ -61,7 +61,7 @@ function NewSurvey() {
   console.log(survey);
   id++; //To ensure ID is unique (only goes up) for each question
   return (
-    <div className="w-screen lg:flex block ">
+    <div className="w-full lg:flex block ">
       {/* <div className="lg:w-1/3 lg:border-r-2 border-gray-600 dark:border-slate-400 border-b-2 lg:border-b-0 w-full min-h-screen">
         <div className="flex flex-col items-center justify-start w-full lg:w-1/3 lg:fixed">
           <div className=" w-11/12 max-full flex  mt-10 ">

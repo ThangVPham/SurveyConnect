@@ -26,7 +26,7 @@ function SingleQuesiton({ q, index, setQuestions }: ISingleQuestion) {
     });
   }, [question]);
   return (
-    <div className="w-5/6 flex flex-col rounded-lg dark:border-slate-200  dark:bg-transparent bg-white border border-t-6 items-start justify-center mx-auto gap-8 p-4 mb-4 shadow-2xl">
+    <div className="w-11/12 flex flex-col rounded-lg dark:border-slate-200  dark:bg-transparent bg-white border border-t-6 items-start justify-center mx-auto gap-8 p-4 mb-4 shadow-2xl">
       <div className="flex flex-col gap-4 w-full">
         <select
           name="questionType"
