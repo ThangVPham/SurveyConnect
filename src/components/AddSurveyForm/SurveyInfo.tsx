@@ -5,6 +5,7 @@ interface ISurveyInfo {
   otherSelected: boolean;
   id: number;
   setQuestions: React.Dispatch<React.SetStateAction<IQuestion[]>>;
+  SubmitSurvey: () => Promise<void>;
 }
 interface ISurvey {
   surveyName: string;
@@ -31,10 +32,12 @@ interface IResponse {
   question: string;
   answer: string;
 }
-function SurveyInfo({ setSurvey, setOtherSelected, otherSelected, id, setQuestions }: ISurveyInfo) {
+function SurveyInfo({ setSurvey, setOtherSelected, otherSelected, id, setQuestions, SubmitSurvey }: ISurveyInfo) {
   return (
     <div className="lg:w-1/3 lg:border-r-2 border-gray-600 dark:border-slate-400 border-b-2 lg:border-b-0 w-full min-h-screen">
       <div className="flex flex-col items-center justify-start w-full lg:w-1/3 lg:fixed">
+        <h2 className="text-lg mt-4 lg:mt-6 xl:mt-16">Please fill out the survey information</h2>
+
         <div className=" w-full max-full flex  mt-10 ">
           <div className="w-11/12 flex flex-col rounded-lg dark:border-slate-200 border-green-600   border-t-4 shadow-2xl border-t-6 items-start justify-center mx-auto gap-8 p-4 mb-4 bg-white dark:bg-transparent">
             <div className="flex flex-col gap-4 w-full">
@@ -74,10 +77,9 @@ function SurveyInfo({ setSurvey, setOtherSelected, otherSelected, id, setQuestio
             </div>
             <div className="dark:bg-transparent w-full ">
               <select
-                name="organization"
-                id="organization"
+                name="surveyType"
+                id="surveyType"
                 className="dark:bg-[#0F2746] w-full dark:border-slate-400  outline-none dark:text-slate-400 py-1 bg-transparent  border-b-2 border-green-600 text-slate-400 px-2"
-                placeholder="Organization"
                 onChange={(e) => {
                   if (e.target.value === "Other") {
                     setOtherSelected(true);
@@ -126,7 +128,7 @@ function SurveyInfo({ setSurvey, setOtherSelected, otherSelected, id, setQuestio
                 placeholder="Date"
                 onChange={(e) => {
                   setSurvey((prevState) => {
-                    return { ...prevState, date: e.target.value };
+                    return { ...prevState, dateEnd: e.target.value };
                   });
                 }}
               />
@@ -167,7 +169,12 @@ function SurveyInfo({ setSurvey, setOtherSelected, otherSelected, id, setQuestio
           >
             Add Questions
           </button>
-          <button className="border p-2 rounded-2xl dark:hover:text-slate-900 dark:hover:bg-slate-200 transition-bg duration-300 dark:border-slate-200 bg-green-600 text-slate-100 border-green-600 dark:bg-transparent hover:text-green-600 hover:bg-slate-200">
+          <button
+            className="border p-2 rounded-2xl dark:hover:text-slate-900 dark:hover:bg-slate-200 transition-bg duration-300 dark:border-slate-200 bg-green-600 text-slate-100 border-green-600 dark:bg-transparent hover:text-green-600 hover:bg-slate-200"
+            onClick={() => {
+              SubmitSurvey();
+            }}
+          >
             Submit Survey
           </button>
         </div>
