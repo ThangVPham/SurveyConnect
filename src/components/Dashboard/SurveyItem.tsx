@@ -121,7 +121,7 @@ function SurveyItem({ _id, surveyName, organization, dateEnd, activeStatus }: Su
           <div
             className="w-8 h-8 border border-slate-400 flex justify-center items-center rounded-xl hover:border-green-600 hover:text-green-600 dark:hover:border-cyan-600 dark:hover:text-cyan-600 cursor-pointer"
             onClick={() => {
-              navigator.clipboard.writeText(`https://surveyconnect-frontend.onrender.com/surveydetail/#/${_id}`);
+              navigator.clipboard.writeText(`https://surveyconnect-frontend.onrender.com/#/surveydetail/${_id}`);
               triggerToast();
             }}
           >
