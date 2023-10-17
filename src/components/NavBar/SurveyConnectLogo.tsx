@@ -5,7 +5,7 @@ interface DarkModeType {
 function SurveyConnectLogo({ darkMode }: DarkModeType) {
   return (
     <Link to="/" className="xl:w-1/2 lg:w-2/5 ml-5">
-      <img src={darkMode ? "../../public/SCWhite.svg" : "../../public/SC.svg"} alt="Survey Connect Logo" />
+      <img src={darkMode ? "./assets/SCWhite.svg" : "./assets/SC.svg"} alt="Survey Connect Logo" />
     </Link>
   );
 }

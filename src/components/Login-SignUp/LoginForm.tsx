@@ -59,7 +59,7 @@ function LoginForm({ setLogIn }: ILoginForm) {
   return (
     <div className=" flex flex-col relative">
       <div className=" flex justify-center items-centers mt-28 h-24">
-        <img src="../../../public/SCWhite.svg" alt="Survey Connect logo" />
+        <img src="./assets/SCWhite.svg" alt="Survey Connect logo" />
       </div>
       <div className="w-11/12 sm:w-96 xl:w-1/4 flex flex-col border-transparet rounded-2xl p-10 dark:bg-[#172A46] shadow-2xl bg-slate-900/50 text-sky-100 mx-auto  relative pt-20 overflow-hidden">
         <div
@@ -165,7 +165,7 @@ function LoginForm({ setLogIn }: ILoginForm) {
             onClick={(e) => SubmitLogin(e)}
           >
             {loading ? (
-              <img src="../../../public/loading-gif.gif" className="w-[25px]" alt="loading"></img>
+              <img src="./assets/loading-gif.gif" className="w-[25px]" alt="loading"></img>
             ) : (
               <span>Log In</span>
             )}

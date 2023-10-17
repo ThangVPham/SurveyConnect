@@ -64,7 +64,7 @@ function SignupForm({ setLogIn }: ISignupForm) {
       }
     >
       <div className="w-full h-16 flex justify-center">
-        <img src="../../../public/SCWhite.svg" alt="Survey Connect logo" />
+        <img src="./assets/SCWhite.svg" alt="Survey Connect logo" />
       </div>
       <div className="w-11/12 md:w-1/2 xl:w-1/3 2xl:w-1/4 border-transparent rounded-2xl p-10 dark:bg-[#172A46] shadow-2xl bg-slate-900/50">
         <form className="flex flex-col w-full pt-10 relative overflow-x-hidden overflow-y-visible">
@@ -218,7 +218,7 @@ function SignupForm({ setLogIn }: ISignupForm) {
             onClick={(e) => onSubmitForm(e)}
           >
             {loading ? (
-              <img src="../../../public/loading-gif.gif" className="w-[25px]" alt="loading" />
+              <img src="./assets/loading-gif.gif" className="w-[25px]" alt="loading" />
             ) : (
               <span>Create Account</span>
             )}

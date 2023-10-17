@@ -25,7 +25,7 @@ function Home({ isLoggedIn }: HomeProp) {
         </div>
       </div>
       <div className="w-1/2 xl:w-1/4 md:ml-10 mx-auto md:mx-0 ">
-        <img src="../../public/boy-with-book.png" alt="" className="w-full ml-10" />
+        <img src="./assets/boy-with-book.png" alt="" className="w-full ml-10" />
       </div>
     </div>
   );
