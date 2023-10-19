@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faHome } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { LOGIN_API } from "../../API/Api";
+// import { LOGIN_API } from "../../API/Api";
 interface ILoginInfo {
   email: string;
   password: string;
@@ -10,7 +10,7 @@ interface ILoginInfo {
 interface ILoginForm {
   setLogIn: () => void;
 }
-// const LOGIN_API = "http://localhost:5000/api/user/login";
+const LOGIN_API = "http://localhost:5000/api/user/login";
 function LoginForm({ setLogIn }: ILoginForm) {
   const [loading, setLoading] = useState(false);
   const [revealPassword, setRevealPassword] = useState(false);
@@ -18,18 +18,13 @@ function LoginForm({ setLogIn }: ILoginForm) {
   const [success, setSuccess] = useState(false);
   const [msg, setMsg] = useState<string | null>(null);
   const navigate = useNavigate();
-  // const controller = new AbortController();
+
   function clearMsg() {
     setTimeout(() => {
       setMsg(null);
     }, 4000);
   }
-  // useEffect(() => {
-  //   return () => {
-  //     console.log("Aborting Fetch");
-  //     controller.abort();
-  //   };
-  // }, []);
+
   async function SubmitLogin(e: React.SyntheticEvent) {
     e.preventDefault();
     const content = JSON.stringify(loginInfo);

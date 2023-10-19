@@ -6,7 +6,11 @@ export function useFetch<T>(url: string) {
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
-    fetch(url)
+    fetch(url, {
+      headers: {
+        authorization: localStorage.getItem("token") ?? "",
+      },
+    })
       .then((response) => response.json())
       .then((data) => {
         setData(data);

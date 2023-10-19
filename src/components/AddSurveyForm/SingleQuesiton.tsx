@@ -11,11 +11,17 @@ interface IQuestion {
   imgURL: string[];
   imgDesc: string[];
 }
+interface IValidInputFields {
+  suvreyName: boolean;
+  dateEnd: boolean;
+  questionsLength: boolean;
+  questionsCheck: boolean;
+}
 interface ISingleQuestion {
   q: IQuestion;
-
   index: number;
   setQuestions: React.Dispatch<React.SetStateAction<IQuestion[]>>;
+  validInputFields: IValidInputFields;
 }
 function SingleQuesiton({ q, index, setQuestions }: ISingleQuestion) {
   const [question, setQuestion] = useState<IQuestion>(q);
@@ -44,21 +50,24 @@ function SingleQuesiton({ q, index, setQuestions }: ISingleQuestion) {
           <option value="Short Answer">Short Answer</option>
           <option value="Long Feedback">Long Feedback</option>
         </select>
-        <input
-          type="text"
-          name="question"
-          placeholder={`Q${index + 1}. Enter your question`}
-          className=" h-full border-0 border-b-2 dark:bg-transparent px-2 w-full text-[20px] outline-none mt-2 border-green-600 dark:border-slate-400"
-          value={question.question}
-          onChange={(e) => {
-            setQuestion((prevState: IQuestion) => {
-              return { ...prevState, question: e.target.value };
-            });
-          }}
-        />
-
+        <div>
+          <input
+            type="text"
+            name="question"
+            placeholder={`Q${index + 1}. Enter your question`}
+            className={
+              "h-full border-0 border-b-2 dark:bg-transparent px-2 w-full text-[20px] outline-none mt-2 border-green-600 dark:border-slate-400"
+            }
+            value={question.question}
+            onChange={(e) => {
+              setQuestion((prevState: IQuestion) => {
+                return { ...prevState, question: e.target.value };
+              });
+            }}
+          />
+        </div>
         <div className="xl:flex">
-          <div className="flex flex-col gap-2 w-full xl:w-1/2">
+          <div className="flex flex-col gap-2 w-full xl:w-1/2 mt-8">
             {question.options.map((option, i) => {
               return (
                 <div className="flex flex-col w-full " key={i}>

@@ -3,8 +3,14 @@ import SingleQuesiton from "./SingleQuesiton";
 interface ISurveyQuestions {
   questions: IQuestion[];
   setQuestions: React.Dispatch<React.SetStateAction<IQuestion[]>>;
+  validInputFields: IValidInputFields;
 }
-
+interface IValidInputFields {
+  suvreyName: boolean;
+  dateEnd: boolean;
+  questionsLength: boolean;
+  questionsCheck: boolean;
+}
 interface IQuestion {
   id: number;
   questionType: string;
@@ -15,12 +21,18 @@ interface IQuestion {
   imgDesc: string[];
 }
 
-function SurveyQuestions({ questions, setQuestions }: ISurveyQuestions) {
+function SurveyQuestions({ questions, setQuestions, validInputFields }: ISurveyQuestions) {
   return (
     <div className="w-full lg:w-2/3 flex flex-col gap-6 mt-10">
       {questions.map((question, index) => {
         return (
-          <SingleQuesiton q={question} key={question.id} index={index} setQuestions={setQuestions}></SingleQuesiton>
+          <SingleQuesiton
+            q={question}
+            key={question.id}
+            index={index}
+            setQuestions={setQuestions}
+            validInputFields={validInputFields}
+          ></SingleQuesiton>
         );
       })}
     </div>

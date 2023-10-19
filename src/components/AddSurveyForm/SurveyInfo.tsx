@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 interface ISurveyInfo {
   setSurvey: (value: React.SetStateAction<ISurvey>) => void;
   setOtherSelected: React.Dispatch<React.SetStateAction<boolean>>;
@@ -7,6 +7,14 @@ interface ISurveyInfo {
   setQuestions: React.Dispatch<React.SetStateAction<IQuestion[]>>;
   SubmitSurvey: () => Promise<void>;
   survey: ISurvey;
+  validInputFields: IValidInputFields;
+  setValidInputFields: React.Dispatch<React.SetStateAction<IValidInputFields>>;
+}
+interface IValidInputFields {
+  suvreyName: boolean;
+  dateEnd: boolean;
+  questionsLength: boolean;
+  questionsCheck: boolean;
 }
 interface ISurvey {
   surveyName: string;
@@ -41,14 +49,9 @@ function SurveyInfo({
   setQuestions,
   SubmitSurvey,
   survey,
+  validInputFields,
+  setValidInputFields,
 }: ISurveyInfo) {
-  const [validInputFields, setValidInputFields] = useState({
-    suvreyName: false,
-    dateEnd: false,
-    questionsLength: false,
-    questionsCheck: false,
-  });
-  console.log(validInputFields);
   function CheckSurveyBeforeSubmit(): boolean {
     let questionsCheck = true;
     for (let i = 0; i < survey.questions.length; i++) {
@@ -60,19 +63,19 @@ function SurveyInfo({
     setValidInputFields((prevState) => {
       return { ...prevState, questionsCheck: questionsCheck };
     });
-    if (survey.surveyName !== "") {
+    if (survey.surveyName === "") {
       setValidInputFields((prevState) => {
-        return { ...prevState, suvreyName: true };
+        return { ...prevState, suvreyName: false };
       });
     }
-    if (survey.dateEnd !== "") {
+    if (survey.dateEnd === "") {
       setValidInputFields((prevState) => {
-        return { ...prevState, dateEnd: true };
+        return { ...prevState, dateEnd: false };
       });
     }
-    if (survey.questions.length > 0) {
+    if (survey.questions.length < 1) {
       setValidInputFields((prevState) => {
-        return { ...prevState, questionsLength: true };
+        return { ...prevState, questionsLength: false };
       });
     }
     const condition =
@@ -92,13 +95,18 @@ function SurveyInfo({
               <input
                 type="text"
                 placeholder="Survey Name"
-                className=" h-1/2 border-0 border-b-2 border-green-600 dark:border-slate-400 dark:bg-transparent px-3 w-full text-[35px] outline-none mt-2 bg-transparent"
+                className={
+                  validInputFields.suvreyName
+                    ? " h-1/2 border-0 border-b-2 border-green-600 dark:border-slate-400 dark:bg-transparent px-3 w-full text-[35px] outline-none mt-2 bg-transparent"
+                    : " h-1/2 border-0 border-b-2 border-red-600 dark:border-red-600 dark:bg-transparent px-3 w-full text-[35px] outline-none mt-2 bg-transparent"
+                }
                 onChange={(e) => {
                   setSurvey((prevState) => {
                     return { ...prevState, surveyName: e.target.value };
                   });
                 }}
               />
+              {!validInputFields.suvreyName && <p className="text-xs mt-2 text-red-600">Field cannot be empty*</p>}
               <textarea
                 placeholder="Description"
                 className="border-0 border-b-2 dark:bg-transparent px-3 w-full text-base  h-36 resize-none outline-none bg-transparent border-green-600 dark:border-slate-400"
@@ -172,7 +180,11 @@ function SurveyInfo({
                 type="date"
                 name="dateEnd"
                 id="dateEnd"
-                className="dark:bg-transparent w-full border-b-2 px-3 outline-none text-slate-400 bg-transparent border-green-600 dark:border-slate-400"
+                className={
+                  validInputFields.dateEnd
+                    ? "dark:bg-transparent w-full border-b-2 px-3 outline-none text-slate-400 bg-transparent border-green-600 dark:border-slate-400"
+                    : "dark:bg-transparent w-full border-b-2 px-3 outline-none text-slate-400 bg-transparent border-red-600 dark:border-red-600"
+                }
                 placeholder="Date"
                 onChange={(e) => {
                   setSurvey((prevState) => {
@@ -180,6 +192,7 @@ function SurveyInfo({
                   });
                 }}
               />
+              {!validInputFields.dateEnd && <p className="text-xs mt-2 text-red-600">Field cannot be empty*</p>}
             </div>
             <div className="dark:bg-transparent w-full">
               <textarea

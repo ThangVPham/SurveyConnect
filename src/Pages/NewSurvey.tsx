@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SurveyInfo from "../components/AddSurveyForm/SurveyInfo";
 import SurveyQuestions from "../components/AddSurveyForm/SurveyQuestions";
-import { SURVEY_POST_API } from "../API/Api";
+// import { SURVEY_POST_API } from "../API/Api";
 interface ISurvey {
   surveyName: string;
   surveyOwner: string;
@@ -30,7 +30,13 @@ interface IResponse {
   question: string;
   answer: string;
 }
-
+interface IValidInputFields {
+  suvreyName: boolean;
+  dateEnd: boolean;
+  questionsLength: boolean;
+  questionsCheck: boolean;
+}
+const SURVEY_POST_API = "http://localhost:5000/api/surveys";
 let id = 0;
 function NewSurvey() {
   const navigate = useNavigate();
@@ -54,6 +60,12 @@ function NewSurvey() {
     responses: [],
     questions: questions,
   });
+  const [validInputFields, setValidInputFields] = useState<IValidInputFields>({
+    suvreyName: true,
+    dateEnd: true,
+    questionsLength: true,
+    questionsCheck: true,
+  });
   async function SubmitSurvey() {
     try {
       const response = await fetch(SURVEY_POST_API, {
@@ -65,7 +77,12 @@ function NewSurvey() {
         body: JSON.stringify(survey),
       });
       const data = await response.json();
-      console.log(data);
+      console.log(data.message);
+      if (response.status === 200) {
+        navigate("/dashboard");
+      } else {
+        console.log(data.message);
+      }
     } catch (e) {
       console.log(e);
     }
@@ -88,8 +105,14 @@ function NewSurvey() {
         setQuestions={setQuestions}
         SubmitSurvey={SubmitSurvey}
         survey={survey}
+        validInputFields={validInputFields}
+        setValidInputFields={setValidInputFields}
       ></SurveyInfo>
-      <SurveyQuestions questions={questions} setQuestions={setQuestions}></SurveyQuestions>
+      <SurveyQuestions
+        questions={questions}
+        setQuestions={setQuestions}
+        validInputFields={validInputFields}
+      ></SurveyQuestions>
     </div>
   );
 }
