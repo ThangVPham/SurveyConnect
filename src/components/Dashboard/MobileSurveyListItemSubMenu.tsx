@@ -16,7 +16,7 @@ function MobileSurveyListItemSubMenu({ id, subMenuToggled, triggerToast }: Mobil
       <div
         className="border-b h-1/4 hover:bg-green-600 dark:hover:bg-slate-500 pt-1"
         onClick={() => {
-          navigator.clipboard.writeText(`https://surveyconnect-frontend.onrender.com/surveydetail/#/${id}`);
+          navigator.clipboard.writeText(`https://surveyconnect-frontend.onrender.com/#/surveydetail/${id}`);
           triggerToast();
         }}
       >
