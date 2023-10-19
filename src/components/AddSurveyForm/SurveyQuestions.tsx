@@ -16,8 +16,6 @@ interface IQuestion {
 }
 
 function SurveyQuestions({ questions, setQuestions }: ISurveyQuestions) {
-  console.log("questions changed");
-
   return (
     <div className="w-full lg:w-2/3 flex flex-col gap-6 mt-10">
       {questions.map((question, index) => {

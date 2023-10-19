@@ -46,7 +46,7 @@ function NewSurvey() {
     surveyName: "",
     surveyOwner: "",
     organization: "",
-    surveyType: "MC",
+    surveyType: "Academic",
     description: "",
     activeStatus: true,
     dateEnd: "",
@@ -87,6 +87,7 @@ function NewSurvey() {
         id={id}
         setQuestions={setQuestions}
         SubmitSurvey={SubmitSurvey}
+        survey={survey}
       ></SurveyInfo>
       <SurveyQuestions questions={questions} setQuestions={setQuestions}></SurveyQuestions>
     </div>

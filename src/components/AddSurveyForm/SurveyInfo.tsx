@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 interface ISurveyInfo {
   setSurvey: (value: React.SetStateAction<ISurvey>) => void;
   setOtherSelected: React.Dispatch<React.SetStateAction<boolean>>;
@@ -6,6 +6,7 @@ interface ISurveyInfo {
   id: number;
   setQuestions: React.Dispatch<React.SetStateAction<IQuestion[]>>;
   SubmitSurvey: () => Promise<void>;
+  survey: ISurvey;
 }
 interface ISurvey {
   surveyName: string;
@@ -32,7 +33,54 @@ interface IResponse {
   question: string;
   answer: string;
 }
-function SurveyInfo({ setSurvey, setOtherSelected, otherSelected, id, setQuestions, SubmitSurvey }: ISurveyInfo) {
+function SurveyInfo({
+  setSurvey,
+  setOtherSelected,
+  otherSelected,
+  id,
+  setQuestions,
+  SubmitSurvey,
+  survey,
+}: ISurveyInfo) {
+  const [validInputFields, setValidInputFields] = useState({
+    suvreyName: false,
+    dateEnd: false,
+    questionsLength: false,
+    questionsCheck: false,
+  });
+  console.log(validInputFields);
+  function CheckSurveyBeforeSubmit(): boolean {
+    let questionsCheck = true;
+    for (let i = 0; i < survey.questions.length; i++) {
+      if (survey.questions[i].question === "") {
+        questionsCheck = false;
+        break;
+      }
+    }
+    setValidInputFields((prevState) => {
+      return { ...prevState, questionsCheck: questionsCheck };
+    });
+    if (survey.surveyName !== "") {
+      setValidInputFields((prevState) => {
+        return { ...prevState, suvreyName: true };
+      });
+    }
+    if (survey.dateEnd !== "") {
+      setValidInputFields((prevState) => {
+        return { ...prevState, dateEnd: true };
+      });
+    }
+    if (survey.questions.length > 0) {
+      setValidInputFields((prevState) => {
+        return { ...prevState, questionsLength: true };
+      });
+    }
+    const condition =
+      survey.dateEnd !== "" && survey.questions.length > 0 && questionsCheck && survey.surveyName !== "";
+
+    return condition;
+  }
+
   return (
     <div className="lg:w-1/3 lg:border-r-2 border-gray-600 dark:border-slate-400 border-b-2 lg:border-b-0 w-full min-h-screen">
       <div className="flex flex-col items-center justify-start w-full lg:w-1/3 lg:fixed">
@@ -172,7 +220,13 @@ function SurveyInfo({ setSurvey, setOtherSelected, otherSelected, id, setQuestio
           <button
             className="border p-2 rounded-2xl dark:hover:text-slate-900 dark:hover:bg-slate-200 transition-bg duration-300 dark:border-slate-200 bg-green-600 text-slate-100 border-green-600 dark:bg-transparent hover:text-green-600 hover:bg-slate-200"
             onClick={() => {
-              SubmitSurvey();
+              const readyToSubmit = CheckSurveyBeforeSubmit();
+              if (readyToSubmit) {
+                console.log("submitin");
+                SubmitSurvey();
+              } else {
+                console.log("not ready, check");
+              }
             }}
           >
             Submit Survey
