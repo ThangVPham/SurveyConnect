@@ -18,12 +18,18 @@ function LoginForm({ setLogIn }: ILoginForm) {
   const [success, setSuccess] = useState(false);
   const [msg, setMsg] = useState<string | null>(null);
   const navigate = useNavigate();
+  // const controller = new AbortController();
   function clearMsg() {
     setTimeout(() => {
       setMsg(null);
     }, 4000);
   }
-  console.log(success);
+  // useEffect(() => {
+  //   return () => {
+  //     console.log("Aborting Fetch");
+  //     controller.abort();
+  //   };
+  // }, []);
   async function SubmitLogin(e: React.SyntheticEvent) {
     e.preventDefault();
     const content = JSON.stringify(loginInfo);
@@ -34,6 +40,7 @@ function LoginForm({ setLogIn }: ILoginForm) {
         headers: {
           "Content-Type": "application/json",
         },
+
         body: content,
       });
 
@@ -44,10 +51,10 @@ function LoginForm({ setLogIn }: ILoginForm) {
         clearMsg();
       } else if (response.status === 200) {
         localStorage.setItem("token", data.token);
-        setLogIn();
         setSuccess(true);
         setMsg(data.message);
         setTimeout(() => {
+          setLogIn();
           navigate("/dashboard");
         }, 1500);
       } else {

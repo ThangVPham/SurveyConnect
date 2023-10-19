@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { faEye, faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
@@ -16,7 +16,7 @@ function SignupForm({ setLogIn }: ISignupForm) {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [userInfo, setUserInfo] = useState({ email: "", password: "", confirmPassword: "", termsOfUse: false });
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   function clearMsg() {
     setTimeout(() => {
       setMsg(null);
@@ -65,9 +65,6 @@ function SignupForm({ setLogIn }: ISignupForm) {
       setLogIn();
       setSuccess(true);
       setMsg(data.message);
-      setTimeout(() => {
-        navigate("/dashboard");
-      }, 1500);
     }
   }
 
