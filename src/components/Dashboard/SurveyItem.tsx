@@ -83,7 +83,7 @@ function SurveyItem({ _id, surveyName, organization, dateEnd, activeStatus }: Su
         <div className="hidden sm:block">
           <p>Responses</p>
           <p className="text-xs font-light">
-            <i>12</i>
+            <i>{Math.floor(Math.random() * (50 - 1) + 1)}</i>
           </p>
         </div>
 
