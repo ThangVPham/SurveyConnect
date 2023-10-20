@@ -5,6 +5,7 @@ interface ISignup {
   setLogIn: () => void;
 }
 function Signup({ setLogIn }: ISignup) {
+  console.log("signup");
   const navigate = useNavigate();
   useEffect(() => {
     const loginToken = localStorage.getItem("token");

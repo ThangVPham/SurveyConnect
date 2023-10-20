@@ -36,7 +36,7 @@ interface IValidInputFields {
   questionsLength: boolean;
   questionsCheck: boolean;
 }
-const SURVEY_POST_API = "http://localhost:5000/api/surveys";
+const SURVEY_POST_API = "http://localhost:5000/api/user/surveys";
 let id = 0;
 function NewSurvey() {
   const navigate = useNavigate();
@@ -74,6 +74,7 @@ function NewSurvey() {
           "Content-Type": "application/json",
           authorization: `Bearer ${localStorage.getItem("token")}`,
         },
+
         body: JSON.stringify(survey),
       });
       const data = await response.json();

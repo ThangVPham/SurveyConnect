@@ -25,6 +25,7 @@ function MainLayOutRoute({ darkMode, setDarkMode, isLoggedIn, logOut }: MainLayO
         <Route path="/pricing" element={<Pricing />}></Route>
         <Route path="/contact" element={<Contact />}></Route>
         <Route path="/dashboard" element={<Dashboard />}></Route>
+        <Route path="/user/surveydetail/:id" element={<SurveyDetail />}></Route>
         <Route path="/surveydetail/:id" element={<SurveyDetail />}></Route>
         <Route path="/newsurvey" element={<NewSurvey />}></Route>
       </Routes>

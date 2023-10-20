@@ -5,7 +5,7 @@ import SurveyList from "../components/Dashboard/SurveyList";
 import { useFetch } from "../util/useFetch";
 import { useEffect } from "react";
 // import { SURVEY_API } from "../API/Api";
-const SURVEY_API = "http://localhost:5000/api/surveys/";
+const SURVEY_API = "http://localhost:5000/api/user/surveys/";
 interface SurveyList {
   surveys: SurveyItem[];
 }

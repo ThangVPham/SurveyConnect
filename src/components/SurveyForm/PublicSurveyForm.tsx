@@ -35,13 +35,17 @@ enum QuestionType {
   LONG_FEEDBACK = "Long Feedback",
 }
 
-const SURVEY_API = "http://localhost:5000/api/user/surveys";
-function SurveyForm() {
+const SURVEY_API = "http://localhost:5000/api/surveys";
+function PublicSurveyForm() {
   //   const [answer, setAnswer] = useState<Answer>({ name: "", email: "", answers: [] });
   const { id } = useParams();
+
   const { data: survey } = useFetch<Survey>(SURVEY_API + `/${id}`);
+
   const [questionNumber, setQuestionNumber] = useState(0);
+
   const surveyLength = survey?.questions.length || Number.POSITIVE_INFINITY;
+
   function nextQ() {
     setQuestionNumber(questionNumber + 1);
   }
@@ -159,4 +163,4 @@ function SurveyForm() {
   );
 }
 
-export default SurveyForm;
+export default PublicSurveyForm;

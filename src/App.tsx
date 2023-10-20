@@ -2,6 +2,8 @@ import "./App.css";
 import { Routes, Route, HashRouter } from "react-router-dom";
 import { useState } from "react";
 import SurveyQuestions from "./Pages/SurveyQuestions.tsx";
+import SurveyQuestionsPublic from "./Pages/SurveyQuestionsPublic";
+
 import MainLayOutRoute from "./MainLayOutRoute.tsx";
 import Login from "./Pages/Login.tsx";
 import Signup from "./Pages/Signup.tsx";
@@ -35,6 +37,7 @@ function App() {
             <Route path="/login" element={<Login setLogIn={() => setIsLoggedIn(true)} />}></Route>
             <Route path="/signup" element={<Signup setLogIn={() => setIsLoggedIn(true)} />}></Route>
             <Route path="/surveyform/:id" element={<SurveyQuestions />}></Route>
+            <Route path="/surveyformpublic/:id" element={<SurveyQuestionsPublic />}></Route>
           </Routes>
         </HashRouter>
       </div>

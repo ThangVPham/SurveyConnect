@@ -27,7 +27,7 @@ function SurveyDetail() {
   const { data: survey, loading, error } = useFetch<SurveyItem>(SURVEY_API + `/${id}`);
   return (
     <div>
-      {loading && !error && <div>Loading...</div>}
+      {loading && !error && <div className="flex justify-center mt-20">Loading...</div>}
       {error && (
         <div className="xl:flex xl:flex-col w-4/5 mx-auto md:w-1/2 lg:w-2/3  xl:w-full  xl:items-center xl:justify-center mt-2 text-center">
           {error.name} - {error.message}

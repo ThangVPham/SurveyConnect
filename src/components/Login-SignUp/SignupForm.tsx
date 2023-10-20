@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { faEye, faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
@@ -11,6 +11,7 @@ const emailRegex =
 
 const REGISTER_API = "http://localhost:5000/api/user/register";
 function SignupForm({ setLogIn }: ISignupForm) {
+  const navigate = useNavigate();
   const [passwordReveal, setPasswordReveal] = useState({ password: false, confirmPassword: false });
   const [msg, setMsg] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -62,9 +63,12 @@ function SignupForm({ setLogIn }: ISignupForm) {
       clearMsg();
     } else if (response.status === 200) {
       localStorage.setItem("token", data.token);
-      setLogIn();
       setSuccess(true);
       setMsg(data.message);
+      setLogIn();
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 1500);
     }
   }
 

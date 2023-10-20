@@ -25,7 +25,20 @@ interface Question {
 function SurveyList({ surveys, loading }: SurveyListProps) {
   return (
     <div>
+      {loading && (
+        <div className="flex flex-col items-center justify-center gap-2 h-96">
+          <img src="./assets/loading-gif.gif" alt="Loading GIF" className="w-[25px]" />
+          <p>Loading</p>
+        </div>
+      )}
+      {!loading && surveys && surveys.length === 0 && (
+        <div className="flex justify-center mt-20">
+          <p>You don't currently have any survey.</p>
+        </div>
+      )}
       {!loading &&
+        surveys &&
+        surveys?.length > 0 &&
         surveys?.map((survey) => {
           return (
             <SurveyListItem
@@ -40,12 +53,6 @@ function SurveyList({ surveys, loading }: SurveyListProps) {
             ></SurveyListItem>
           );
         })}
-      {loading && (
-        <div className="flex flex-col items-center justify-center gap-2 h-96">
-          <img src="./assets/loading-gif.gif" alt="Loading GIF" className="w-[25px]" />
-          <p>Loading</p>
-        </div>
-      )}
     </div>
   );
 }
