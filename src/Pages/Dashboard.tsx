@@ -4,8 +4,8 @@ import DashNav from "../components/Dashboard/DashNav";
 import SurveyList from "../components/Dashboard/SurveyList";
 import { useFetch } from "../util/useFetch";
 import { useEffect } from "react";
-// import { SURVEY_API } from "../API/Api";
-const SURVEY_API = "http://localhost:5000/api/user/surveys/";
+import { USER_SURVEY_API } from "../API/Api";
+// const SURVEY_API = "http://localhost:5000/api/user/surveys/";
 interface SurveyList {
   surveys: SurveyItem[];
 }
@@ -27,7 +27,7 @@ interface Question {
   imgDesc: string[];
 }
 function Dashboard() {
-  const { data: surveys, loading, error } = useFetch<SurveyItem[]>(SURVEY_API);
+  const { data: surveys, loading, error } = useFetch<SurveyItem[]>(USER_SURVEY_API);
 
   const navigate = useNavigate();
   useEffect(() => {

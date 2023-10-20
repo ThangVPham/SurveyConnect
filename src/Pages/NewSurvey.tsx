@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SurveyInfo from "../components/AddSurveyForm/SurveyInfo";
 import SurveyQuestions from "../components/AddSurveyForm/SurveyQuestions";
-// import { SURVEY_POST_API } from "../API/Api";
+import { USER_SURVEY_API } from "../API/Api";
 interface ISurvey {
   surveyName: string;
   surveyOwner: string;
@@ -36,7 +36,7 @@ interface IValidInputFields {
   questionsLength: boolean;
   questionsCheck: boolean;
 }
-const SURVEY_POST_API = "http://localhost:5000/api/user/surveys";
+// const SURVEY_POST_API = "http://localhost:5000/api/user/surveys";
 let id = 0;
 function NewSurvey() {
   const navigate = useNavigate();
@@ -68,7 +68,7 @@ function NewSurvey() {
   });
   async function SubmitSurvey() {
     try {
-      const response = await fetch(SURVEY_POST_API, {
+      const response = await fetch(USER_SURVEY_API, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
