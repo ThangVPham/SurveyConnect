@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { Link, useParams } from "react-router-dom";
 import { useFetch } from "../../util/useFetch";
-import { SURVEY_API } from "../../API/Api";
+// import { SURVEY_API } from "../../API/Api";
 interface Survey {
   _id: string;
   surveyName: string;
@@ -35,7 +35,7 @@ enum QuestionType {
   LONG_FEEDBACK = "Long Feedback",
 }
 
-// const SURVEY_API = "http://localhost:5000/api/user/surveys";
+const SURVEY_API = "http://localhost:5000/api/surveys";
 function SurveyForm() {
   //   const [answer, setAnswer] = useState<Answer>({ name: "", email: "", answers: [] });
   const { id } = useParams();
