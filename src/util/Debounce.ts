@@ -4,7 +4,7 @@ interface DebounceProp {
 }
 export function Debounce({ cb }: DebounceProp) {
   clearTimeout(id);
-  id = setTimeout(() => {
+  id = window.setTimeout(() => {
     cb();
   }, 150);
 }
