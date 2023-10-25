@@ -2,14 +2,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { faEye, faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import { REGISTER_API } from "../../API/Api";
+// import { REGISTER_API } from "../../API/Api";
 interface ISignupForm {
   setLogIn: () => void;
 }
 const emailRegex =
   /^([a-zA-Z0-9_\-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9-]+.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
 
-// const REGISTER_API = "http://localhost:5000/api/user/register";
+const REGISTER_API = "http://localhost:5000/api/user/register";
 function SignupForm({ setLogIn }: ISignupForm) {
   const navigate = useNavigate();
   const [passwordReveal, setPasswordReveal] = useState({ password: false, confirmPassword: false });

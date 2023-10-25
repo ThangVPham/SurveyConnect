@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SurveyInfo from "../components/AddSurveyForm/SurveyInfo";
 import SurveyQuestions from "../components/AddSurveyForm/SurveyQuestions";
-import { USER_SURVEY_API } from "../API/Api";
+// import { USER_SURVEY_API } from "../API/Api";
 interface ISurvey {
   surveyName: string;
   surveyOwner: string;
@@ -36,7 +36,7 @@ interface IValidInputFields {
   questionsLength: boolean;
   questionsCheck: boolean;
 }
-// const USER_SURVEY_API = "http://localhost:5000/api/user/surveys";
+const USER_SURVEY_API = "http://localhost:5000/api/user/surveys";
 let id = 0;
 function NewSurvey() {
   const navigate = useNavigate();

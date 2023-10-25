@@ -87,7 +87,7 @@ function SingleQuesiton({ q, index, setQuestions }: ISingleQuestion) {
                     {question.options.length > 1 && (
                       <FontAwesomeIcon
                         icon={faRemove}
-                        className="p-2 cursor-pointer"
+                        className="p-2 cursor-pointer text-red-400 hover:text-red-700"
                         onClick={() => {
                           setQuestion((prevState) => {
                             prevState.options.splice(i, 1);
@@ -127,6 +127,12 @@ function SingleQuesiton({ q, index, setQuestions }: ISingleQuestion) {
               }}
             >
               Remove
+            </button>
+            <button
+              className="border px-4 rounded-2xl dark:hover:text-slate-900 dark:hover:bg-slate-200 transition-bg duration-300 dark:border-slate-200 bg-green-600 text-slate-100 border-green-600 dark:bg-transparent hover:text-green-600 hover:bg-white h-[35px] text-xs"
+              onClick={() => {}}
+            >
+              Add Image
             </button>
           </div>
         </div>
