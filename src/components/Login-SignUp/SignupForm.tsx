@@ -9,7 +9,7 @@ interface ISignupForm {
 const emailRegex =
   /^([a-zA-Z0-9_\-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9-]+.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
 
-// const REGISTER_API = "http://localhost:5000/api/user/register";
+//const REGISTER_API = "http://localhost:5000/api/user/register";
 function SignupForm({ setLogIn }: ISignupForm) {
   const navigate = useNavigate();
   const [passwordReveal, setPasswordReveal] = useState({ password: false, confirmPassword: false });

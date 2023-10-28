@@ -10,7 +10,7 @@ interface ILoginInfo {
 interface ILoginForm {
   setLogIn: () => void;
 }
-// const LOGIN_API = "http://localhost:5000/api/user/login";
+//const LOGIN_API = "http://localhost:5000/api/user/login";
 
 function LoginForm({ setLogIn }: ILoginForm) {
   const [loading, setLoading] = useState(false);
