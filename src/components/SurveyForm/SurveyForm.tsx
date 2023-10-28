@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { Link, useParams } from "react-router-dom";
 import { useFetch } from "../../util/useFetch";
-// import { SURVEY_API } from "../../API/Api";
+import { SURVEY_API } from "../../API/Api";
 interface Survey {
   _id: string;
   surveyName: string;
@@ -22,12 +22,11 @@ interface Question {
   imgURL: string[];
   imgDesc: string[];
 }
-// interface Answer {
-//   name: string;
-//   email: string;
-//   answers: string[];
-// }
 
+interface Answer {
+  question: string;
+  answer: string[];
+}
 enum QuestionType {
   SHORT_ANSWER = "Short Answer",
   MULTIPLE_CHOICE = "MC",
@@ -35,9 +34,10 @@ enum QuestionType {
   LONG_FEEDBACK = "Long Feedback",
 }
 
-const SURVEY_API = "http://localhost:5000/api/surveys";
+// const SURVEY_API = "http://localhost:5000/api/surveys";
 function SurveyForm() {
-  //   const [answer, setAnswer] = useState<Answer>({ name: "", email: "", answers: [] });
+  const [answer, setAnswer] = useState<Answer[]>([]);
+  console.log(answer);
   const { id } = useParams();
   const { data: survey } = useFetch<Survey>(SURVEY_API + `/${id}`);
   const [questionNumber, setQuestionNumber] = useState(0);
@@ -67,15 +67,29 @@ function SurveyForm() {
                   <input
                     type="radio"
                     name={`question ${questionNumber + 1}`}
-                    id={option}
+                    id={`${option} ${questionNumber}`}
                     value={option}
                     onClick={(e) => {
                       const input = e.target as HTMLInputElement;
-                      console.log(input.value);
+                      setAnswer((prevState) => {
+                        const index = prevState.findIndex(
+                          (item) => item.question === survey.questions[questionNumber].question
+                        );
+                        if (index < 0) {
+                          prevState.push({
+                            question: survey.questions[questionNumber].question,
+                            answer: [input.value],
+                          });
+                        } else {
+                          prevState[index].answer = [input.value];
+                        }
+
+                        return [...prevState];
+                      });
                     }}
                   />
 
-                  <label htmlFor={option} className="pl-4">
+                  <label htmlFor={`${option} ${questionNumber}`} className="pl-4">
                     {option}
                   </label>
                 </div>
@@ -96,7 +110,20 @@ function SurveyForm() {
                     value={option}
                     onClick={(e) => {
                       const input = e.target as HTMLInputElement;
-                      console.log(input.value);
+                      setAnswer((prevState) => {
+                        const currentAnsIndex = prevState.findIndex(
+                          (item) => item.question === survey.questions[questionNumber].question
+                        );
+                        if (currentAnsIndex < 0) {
+                          prevState.push({
+                            question: survey.questions[questionNumber].question,
+                            answer: [input.value],
+                          });
+                        } else {
+                          prevState[currentAnsIndex].answer.push(input.value);
+                        }
+                        return [...prevState];
+                      });
                     }}
                   />
 
