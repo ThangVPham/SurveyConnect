@@ -16,6 +16,12 @@ interface SurveyItem {
   activeStatus: boolean;
   dateEnd: string;
   questions: Question[];
+  responses: [
+    {
+      question: string;
+      answer: string[];
+    }
+  ];
 }
 interface Question {
   questionType: string;

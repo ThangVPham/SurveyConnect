@@ -12,6 +12,12 @@ interface SurveyItem {
   activeStatus: boolean;
   dateEnd: string;
   questions: Question[];
+  responses: [
+    {
+      question: string;
+      answer: string[];
+    }
+  ];
 }
 
 interface Question {
@@ -23,7 +29,7 @@ interface Question {
   imgDesc: string[];
 }
 
-function SurveyItem({ _id, surveyName, organization, dateEnd, activeStatus }: SurveyItem) {
+function SurveyItem({ _id, surveyName, organization, dateEnd, activeStatus, responses }: SurveyItem) {
   const [subMenuToggled, setSubmenuToggled] = useState(false);
   const [surveyStatus, setSurveyStatus] = useState(activeStatus);
   const [copiedNotification, setCopiedNotification] = useState(false);
@@ -83,7 +89,7 @@ function SurveyItem({ _id, surveyName, organization, dateEnd, activeStatus }: Su
         <div className="hidden sm:block">
           <p>Responses</p>
           <p className="text-xs font-light">
-            <i>{Math.floor(Math.random() * (50 - 1) + 1)}</i>
+            <i>{responses.length}</i>
           </p>
         </div>
 

@@ -13,6 +13,12 @@ interface SurveyItem {
   activeStatus: boolean;
   dateEnd: string;
   questions: Question[];
+  responses: [
+    {
+      question: string;
+      answer: string[];
+    }
+  ];
 }
 interface Question {
   questionType: string;
@@ -50,6 +56,7 @@ function SurveyList({ surveys, loading }: SurveyListProps) {
               activeStatus={true}
               dateEnd={survey.dateEnd}
               questions={survey.questions}
+              responses={survey.responses}
             ></SurveyListItem>
           );
         })}
