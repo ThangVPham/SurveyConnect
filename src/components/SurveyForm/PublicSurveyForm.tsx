@@ -5,6 +5,7 @@ import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { Link, useParams } from "react-router-dom";
 import { useFetch } from "../../util/useFetch";
 import { SURVEY_API } from "../../API/Api";
+// const SURVEY_API = "http://localhost:5000/api/surveys";
 interface Survey {
   _id: string;
   surveyName: string;
@@ -35,8 +36,8 @@ enum QuestionType {
   LONG_FEEDBACK = "Long Feedback",
 }
 
-// const SURVEY_API = "http://localhost:5000/api/surveys";
 function PublicSurveyForm() {
+  console.log("public survey form");
   //   const [answer, setAnswer] = useState<Answer>({ name: "", email: "", answers: [] });
   const { id } = useParams();
 

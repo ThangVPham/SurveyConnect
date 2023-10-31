@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Debounce } from "../../util/Debounce";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { Link, useParams } from "react-router-dom";
 import { useFetch } from "../../util/useFetch";
 import { SURVEY_API } from "../../API/Api";
+// const SURVEY_API = "http://localhost:5000/api/surveys";
 interface Survey {
   _id: string;
   surveyName: string;
@@ -34,14 +35,26 @@ enum QuestionType {
   LONG_FEEDBACK = "Long Feedback",
 }
 
-// const SURVEY_API = "http://localhost:5000/api/surveys";
+function InitializeAnswerArray(
+  setAnswer: React.Dispatch<React.SetStateAction<Answer[]>>,
+  surveyQuestionLength: number = 0
+): void {
+  setAnswer(() => {
+    const newAnswerArray = new Array(surveyQuestionLength);
+    return newAnswerArray;
+  });
+}
+
 function SurveyForm() {
-  const [answer, setAnswer] = useState<Answer[]>([]);
-  console.log(answer);
   const { id } = useParams();
-  const { data: survey } = useFetch<Survey>(SURVEY_API + `/${id}`);
+  const { data: survey, loading } = useFetch<Survey>(SURVEY_API + `/${id}`);
+  const [answer, setAnswer] = useState<Answer[]>([]);
   const [questionNumber, setQuestionNumber] = useState(0);
   const surveyLength = survey?.questions.length || Number.POSITIVE_INFINITY;
+  useEffect(() => {
+    InitializeAnswerArray(setAnswer, survey?.questions.length);
+  }, [loading]);
+  console.log(answer);
   function nextQ() {
     setQuestionNumber(questionNumber + 1);
   }
@@ -65,25 +78,18 @@ function SurveyForm() {
               return (
                 <div key={i}>
                   <input
+                    checked={answer[questionNumber]?.answer[0] === option}
                     type="radio"
                     name={`question ${questionNumber + 1}`}
                     id={`${option} ${questionNumber}`}
                     value={option}
-                    onClick={(e) => {
+                    onChange={(e) => {
                       const input = e.target as HTMLInputElement;
                       setAnswer((prevState) => {
-                        const index = prevState.findIndex(
-                          (item) => item.question === survey.questions[questionNumber].question
-                        );
-                        if (index < 0) {
-                          prevState.push({
-                            question: survey.questions[questionNumber].question,
-                            answer: [input.value],
-                          });
-                        } else {
-                          prevState[index].answer = [input.value];
-                        }
-
+                        prevState[questionNumber] = {
+                          question: survey.questions[questionNumber].question,
+                          answer: [input.value],
+                        };
                         return [...prevState];
                       });
                     }}

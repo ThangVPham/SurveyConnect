@@ -3,6 +3,7 @@ import { faEye, faHome } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { LOGIN_API } from "../../API/Api";
+// const LOGIN_API = "http://localhost:5000/api/user/login";
 interface ILoginInfo {
   email: string;
   password: string;
@@ -10,7 +11,6 @@ interface ILoginInfo {
 interface ILoginForm {
   setLogIn: () => void;
 }
-//const LOGIN_API = "http://localhost:5000/api/user/login";
 
 function LoginForm({ setLogIn }: ILoginForm) {
   const [loading, setLoading] = useState(false);

@@ -101,7 +101,7 @@ function SurveyItem({ _id, surveyName, organization, dateEnd, activeStatus }: Su
         </div>
         <div className="flex items-center">
           <Link
-            to={`/surveydetail/${_id}`}
+            to={`/user/surveydetail/${_id}`}
             className="font-light border bg-green-600 border-green-600 py-1 px-5 rounded-2xl text-white hover:text-green-600 hover:bg-white hover:font-semibold  dark:bg-transparent dark:border-slate-400 dark:hover:text-cyan-600 dark:hover:border-cyan-600 text-xs"
           >
             View
