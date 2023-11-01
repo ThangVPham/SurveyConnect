@@ -3,7 +3,6 @@ import { faLock, faUnlock, faEdit, faShareAlt, faTrash, faEllipsisVertical } fro
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MobileSurveyListItemSubMenu from "./MobileSurveyListItemSubMenu";
 import { useState } from "react";
-
 interface SurveyItem {
   _id: string;
   surveyName: string;
@@ -19,6 +18,23 @@ interface SurveyItem {
     }
   ];
 }
+interface SurveyItemProp {
+  _id: string;
+  surveyName: string;
+  organization: string;
+  description: string;
+  activeStatus: boolean;
+  dateEnd: string;
+  questions: Question[];
+  responses: [
+    {
+      question: string;
+      answer: string[];
+    }
+  ];
+  DeleteSurvey(id: string): Promise<boolean>;
+  SetSurvey: React.Dispatch<React.SetStateAction<SurveyItem[] | null>>;
+}
 
 interface Question {
   questionType: string;
@@ -29,7 +45,16 @@ interface Question {
   imgDesc: string[];
 }
 
-function SurveyItem({ _id, surveyName, organization, dateEnd, activeStatus, responses }: SurveyItem) {
+function SurveyItem({
+  _id,
+  surveyName,
+  organization,
+  dateEnd,
+  activeStatus,
+  responses,
+  DeleteSurvey,
+  SetSurvey,
+}: SurveyItemProp) {
   const [subMenuToggled, setSubmenuToggled] = useState(false);
   const [surveyStatus, setSurveyStatus] = useState(activeStatus);
   const [copiedNotification, setCopiedNotification] = useState(false);
@@ -81,7 +106,7 @@ function SurveyItem({ _id, surveyName, organization, dateEnd, activeStatus, resp
           <p className="text-xs font-light">{surveyName}</p>
         </div>
         <div className="xl:w-32 w-20">
-          <p>Survey Owner</p>
+          <p>Organization</p>
           <p className="text-xs font-light">
             <i>{organization}</i>
           </p>
@@ -134,7 +159,28 @@ function SurveyItem({ _id, surveyName, organization, dateEnd, activeStatus, resp
           </div>
         </div>
         <div className="hidden lg:flex md:items-center">
-          <div className="w-8 h-8 border border-slate-400 flex justify-center items-center rounded-xl hover:text-slate-200 hover:bg-red-300 hover:border-red-300 cursor-pointer">
+          <div
+            className="w-8 h-8 border border-slate-400 flex justify-center items-center rounded-xl hover:text-slate-200 hover:bg-red-300 hover:border-red-300 cursor-pointer"
+            onClick={async () => {
+              console.log("deleting");
+              const result = await DeleteSurvey(_id);
+              if (result) {
+                SetSurvey((prevState) => {
+                  if (prevState) {
+                    const surveyIndex = prevState?.findIndex((survey) => survey._id === _id) ?? -1;
+                    console.log(surveyIndex);
+                    if (surveyIndex > -1) {
+                      prevState?.splice(surveyIndex, 1);
+                    }
+                    return [...prevState];
+                  }
+                  return [];
+                });
+              } else {
+                console.log("Unable to delete survey");
+              }
+            }}
+          >
             <FontAwesomeIcon icon={faTrash} />
           </div>
         </div>

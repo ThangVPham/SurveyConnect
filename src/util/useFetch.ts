@@ -23,5 +23,5 @@ export function useFetch<T>(url: string) {
       });
   }, []);
 
-  return { data, loading, error };
+  return { data, loading, error, setData };
 }

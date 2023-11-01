@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { useFetch } from "../util/useFetch";
-import { SURVEY_API } from "../API/Api";
-// const SURVEY_API = "http://localhost:5000/api/surveys";
+// import { SURVEY_API } from "../API/Api";
+const SURVEY_API = "http://localhost:5000/api/surveys";
 interface SurveyItem {
   _id: string;
   surveyName: string;
@@ -22,8 +22,9 @@ interface Question {
 
 function SurveyDetail() {
   const { id } = useParams();
-
+  console.log(id);
   const { data: survey, loading, error } = useFetch<SurveyItem>(SURVEY_API + `/${id}`);
+  console.log(survey);
   return (
     <div>
       {loading && !error && <div className="flex justify-center mt-20">Loading...</div>}

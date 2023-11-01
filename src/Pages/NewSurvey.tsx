@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SurveyInfo from "../components/AddSurveyForm/SurveyInfo";
 import SurveyQuestions from "../components/AddSurveyForm/SurveyQuestions";
-import { USER_SURVEY_API } from "../API/Api";
-// const USER_SURVEY_API = "http://localhost:5000/api/user/surveys";
+// import { USER_SURVEY_API } from "../API/Api";
+const USER_SURVEY_API = "http://localhost:5000/api/user/surveys";
 interface ISurvey {
   surveyName: string;
   surveyOwner: string;

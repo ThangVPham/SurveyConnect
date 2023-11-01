@@ -4,8 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useFetch } from "../../util/useFetch";
-import { SURVEY_API } from "../../API/Api";
-// const SURVEY_API = "http://localhost:5000/api/surveys";
+// import { SURVEY_API } from "../../API/Api";
+const SURVEY_API = "http://localhost:5000/api/surveys";
 interface Survey {
   _id: string;
   surveyName: string;
@@ -69,7 +69,7 @@ function SurveyForm() {
     });
     if (surveyValid) {
       const headerInfo = {
-        userId: "652bfd3418f41f35d2c53069",
+        userId: survey?.surveyOwner ?? "0",
         "Content-Type": "application/json",
       };
       const surveyAnswer = JSON.stringify(answer);

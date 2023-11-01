@@ -4,6 +4,8 @@ interface SurveyListProps {
   surveys: SurveyItem[] | null;
   loading: boolean;
   error: Error | null;
+  DeleteSurvey(id: string): Promise<boolean>;
+  SetSurvey: React.Dispatch<React.SetStateAction<SurveyItem[] | null>>;
 }
 interface SurveyItem {
   _id: string;
@@ -28,7 +30,7 @@ interface Question {
   imgURL: string[];
   imgDesc: string[];
 }
-function SurveyList({ surveys, loading }: SurveyListProps) {
+function SurveyList({ surveys, loading, DeleteSurvey, SetSurvey }: SurveyListProps) {
   return (
     <div>
       {loading && (
@@ -57,6 +59,8 @@ function SurveyList({ surveys, loading }: SurveyListProps) {
               dateEnd={survey.dateEnd}
               questions={survey.questions}
               responses={survey.responses}
+              DeleteSurvey={DeleteSurvey}
+              SetSurvey={SetSurvey}
             ></SurveyListItem>
           );
         })}
