@@ -44,7 +44,7 @@ function Dashboard() {
   async function DeleteSurvey(id: string): Promise<boolean> {
     const token = localStorage.getItem("token");
     try {
-      const res = await fetch(`${USER_SURVEY_API}${id}`, {
+      const res = await fetch(`${USER_SURVEY_API}/${id}`, {
         method: "DELETE",
         headers: {
           authorization: `Bearer ${token}`,
