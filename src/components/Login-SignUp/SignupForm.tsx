@@ -2,8 +2,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { faEye, faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-// import { REGISTER_API } from "../../API/Api";
-const REGISTER_API = "http://localhost:5000/api/user/register";
+import { REGISTER_API } from "../../API/Api";
+// const REGISTER_API = "http://localhost:5000/api/user/register";
 interface ISignupForm {
   setLogIn: () => void;
 }

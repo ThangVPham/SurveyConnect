@@ -3,8 +3,8 @@ import DashNav from "../components/Dashboard/DashNav";
 import SurveyList from "../components/Dashboard/SurveyList";
 import { useFetch } from "../util/useFetch";
 import { useEffect } from "react";
-// import { USER_SURVEY_API } from "../API/Api";
-const USER_SURVEY_API = "http://localhost:5000/api/user/surveys/";
+import { USER_SURVEY_API } from "../API/Api";
+// const USER_SURVEY_API = "http://localhost:5000/api/user/surveys/";
 interface SurveyList {
   surveys: SurveyItem[];
 }
