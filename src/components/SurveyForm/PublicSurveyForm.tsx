@@ -40,8 +40,7 @@ function PublicSurveyForm() {
   console.log("public survey form");
   //   const [answer, setAnswer] = useState<Answer>({ name: "", email: "", answers: [] });
   const { id } = useParams();
-  const abortController = new AbortController();
-  const { data: survey } = useFetch<Survey>(SURVEY_API + `/${id}`, "GET", abortController);
+  const { data: survey } = useFetch<Survey>(SURVEY_API + `/${id}`, "GET");
 
   const [questionNumber, setQuestionNumber] = useState(0);
 

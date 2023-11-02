@@ -32,13 +32,7 @@ interface Question {
   imgDesc: string[];
 }
 function Dashboard() {
-  const abortController = new AbortController();
-  const {
-    data: surveys,
-    loading,
-    error,
-    setData: setSurveys,
-  } = useFetch<SurveyItem[]>(USER_SURVEY_API, "GET", abortController);
+  const { data: surveys, loading, error, setData: setSurveys } = useFetch<SurveyItem[]>(USER_SURVEY_API, "GET");
 
   const navigate = useNavigate();
   useEffect(() => {

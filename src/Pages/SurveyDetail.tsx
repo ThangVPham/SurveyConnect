@@ -22,8 +22,7 @@ interface Question {
 
 function SurveyDetail() {
   const { id } = useParams();
-  const abortController = new AbortController();
-  const { data: survey, loading, error } = useFetch<SurveyItem>(SURVEY_API + `/${id}`, "GET", abortController);
+  const { data: survey, loading, error } = useFetch<SurveyItem>(SURVEY_API + `/${id}`, "GET");
   return (
     <div>
       {loading && !error && <div className="flex justify-center mt-20">Loading...</div>}

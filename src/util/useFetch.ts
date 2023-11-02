@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 
-export function useFetch<T>(url: string, method: string, abortController: AbortController, body?: string) {
+export function useFetch<T>(url: string, method: string, body?: string) {
   const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
+  const abortController = new AbortController();
 
   const token = localStorage.getItem("token") ?? "";
   useEffect(() => {
@@ -45,7 +46,7 @@ export function useFetch<T>(url: string, method: string, abortController: AbortC
     }
     return () => {
       abortController.abort();
-      console.log("Fetch Request aborted");
+      console.log("Fetch aborted.");
     };
   }, []);
 
