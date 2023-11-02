@@ -50,7 +50,8 @@ function InitializeAnswerArray(
 function SurveyForm() {
   const navigate = useNavigate();
   const { id } = useParams();
-  const { data: survey, loading } = useFetch<Survey>(SURVEY_API + `/${id}`, "GET");
+  const abortController = new AbortController();
+  const { data: survey, loading } = useFetch<Survey>(SURVEY_API + `/${id}`, "GET", abortController);
   const [answer, setAnswer] = useState<Answer[]>([]);
   const [questionNumber, setQuestionNumber] = useState(0);
   const surveyLength = survey?.questions.length || Number.POSITIVE_INFINITY;
