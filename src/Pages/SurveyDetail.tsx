@@ -23,7 +23,7 @@ interface Question {
 function SurveyDetail() {
   const { id } = useParams();
   console.log(id);
-  const { data: survey, loading, error } = useFetch<SurveyItem>(SURVEY_API + `/${id}`);
+  const { data: survey, loading, error } = useFetch<SurveyItem>(SURVEY_API + `/${id}`, "GET");
   console.log(survey);
   return (
     <div>

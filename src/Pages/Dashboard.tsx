@@ -32,8 +32,14 @@ interface Question {
   imgDesc: string[];
 }
 function Dashboard() {
-  const { data: surveys, loading, error, setData: setSurveys } = useFetch<SurveyItem[]>(USER_SURVEY_API);
-  console.log(surveys);
+  const abortController = new AbortController();
+  const {
+    data: surveys,
+    loading,
+    error,
+    setData: setSurveys,
+  } = useFetch<SurveyItem[]>(USER_SURVEY_API, "GET", abortController);
+
   const navigate = useNavigate();
   useEffect(() => {
     const loginToken = localStorage.getItem("token");
