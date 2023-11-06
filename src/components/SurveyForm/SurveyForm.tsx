@@ -54,6 +54,7 @@ function SurveyForm() {
   const [answer, setAnswer] = useState<Answer[]>([]);
   const [questionNumber, setQuestionNumber] = useState(0);
   const surveyLength = survey?.questions.length || Number.POSITIVE_INFINITY;
+  const [submitLoading, setSubmitLoading] = useState(false);
   useEffect(() => {
     InitializeAnswerArray(setAnswer, survey?.questions.length);
   }, [loading]);
@@ -64,6 +65,7 @@ function SurveyForm() {
     setQuestionNumber(questionNumber - 1);
   }
   async function handleSubmit() {
+    setSubmitLoading(true);
     const surveyValid = answer.every((a) => {
       return a.answer.length > 0;
     });
@@ -82,10 +84,13 @@ function SurveyForm() {
       console.log(message);
       if (res.status === 200) {
         navigate("/");
+      } else {
+        console.log(message);
       }
     } else {
       console.log("Question response missing");
     }
+    setSubmitLoading(false);
   }
   return (
     <div className="flex flex-col w-full items-center justify-center  ">
@@ -190,8 +195,19 @@ function SurveyForm() {
         {survey?.questions[questionNumber].questionType === QuestionType.LONG_FEEDBACK && (
           <div className="overflow-y-hidden w-full">
             <textarea
+              value={answer[questionNumber].answer}
               className="bg-stone-100 rounded-lg px-4 dark:bg-slate-700 outline-none p-2 w-full resize-none"
               placeholder="Type answer here"
+              onChange={(e) => {
+                const input = e.target as HTMLTextAreaElement;
+                setAnswer((prevState) => {
+                  prevState.splice(questionNumber, 1, {
+                    question: survey.questions[questionNumber].question,
+                    answer: [input.value],
+                  });
+                  return [...prevState];
+                });
+              }}
             />
           </div>
         )}
@@ -204,6 +220,7 @@ function SurveyForm() {
       <div className="flex gap-10 mt-10">
         <button
           className="w-28 bg-green-600 px-5 py-2 rounded-3xl text-xs h-full my-auto text-white dark:text-slate-300 border border-green-600  hover:text-green-600 hover:bg-white dark:bg-slate-800 dark:border-none dark:hover:bg-slate-100 dark:hover:text-slate-800 lg:text-base "
+          disabled={submitLoading}
           onClick={() => {
             if (questionNumber > 0) {
               const cb = prevQ;
@@ -236,7 +253,11 @@ function SurveyForm() {
               handleSubmit();
             }}
           >
-            Submit
+            {submitLoading ? (
+              <img src="./assets/loading-gif.gif" className="w-[25px] mx-auto" alt="loading"></img>
+            ) : (
+              <span>Submit</span>
+            )}
           </button>
         )}
       </div>

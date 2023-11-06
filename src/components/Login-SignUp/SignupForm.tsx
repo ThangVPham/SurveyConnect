@@ -166,7 +166,7 @@ function SignupForm({ setLogIn }: ISignupForm) {
               />
               <div
                 style={{ color: "#1A2629" }}
-                className="bg-white rounded-r-xl outline-0 pt-2 pr-5 h-9 mb-3 w-1/12 "
+                className="bg-white rounded-r-xl outline-0 pt-2 pr-5 h-9 mb-3 w-1/12 hover:cursor-pointer"
                 onClick={() => {
                   setPasswordReveal((prevState) => {
                     return { ...prevState, password: !prevState.password };
@@ -194,7 +194,7 @@ function SignupForm({ setLogIn }: ISignupForm) {
               />
               <div
                 style={{ color: "#1A2629" }}
-                className="bg-white rounded-r-xl outline-0 pr-2 pt-2 h-9 mb-3 w-1/12 "
+                className="bg-white rounded-r-xl outline-0 pr-2 pt-2 h-9 mb-3 w-1/12 hover:cursor-pointer"
                 onClick={() => {
                   setPasswordReveal((prevState) => {
                     return { ...prevState, confirmPassword: !prevState.confirmPassword };

@@ -65,6 +65,7 @@ function LoginForm({ setLogIn }: ILoginForm) {
       <div className=" flex justify-center items-centers mt-12 h-24">
         <img src="./assets/SCWhite.svg" alt="Survey Connect logo" />
       </div>
+
       <div className="w-11/12 sm:w-96 xl:w-1/4 flex flex-col border-transparet rounded-2xl p-10 dark:bg-[#172A46] shadow-2xl bg-slate-900/50 text-sky-100 mx-auto  relative pt-20 overflow-hidden">
         <div
           className={
@@ -122,7 +123,7 @@ function LoginForm({ setLogIn }: ILoginForm) {
               id="email"
               name="email"
               className="border-transparent rounded-xl outline-0 p-2 h-9 mb-3 text-slate-900"
-              placeholder="example@email.com"
+              placeholder="Demo: demo@surveyconnect.com"
               value={loginInfo.email}
               onChange={(e) => {
                 setLoginInfo((prevState) => {
@@ -142,17 +143,24 @@ function LoginForm({ setLogIn }: ILoginForm) {
                 name="password"
                 id="password"
                 className="border-transparent rounded-l-xl outline-0 p-2 h-9 mb-3 w-11/12 text-slate-900"
-                placeholder="password"
+                placeholder="Password: password"
                 value={loginInfo.password}
                 onChange={(e) => {
                   setLoginInfo((prevState) => {
                     return { ...prevState, password: e.target.value };
                   });
                 }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    SubmitLogin(e);
+                  } else {
+                    return;
+                  }
+                }}
               />
               <div
                 style={{ backgroundColor: "#E8F0FE", color: "#1A2629" }}
-                className="bg-white rounded-r-xl outline-0 p-2 h-9 mb-3"
+                className="bg-white rounded-r-xl outline-0 p-2 h-9 mb-3 hover:cursor-pointer"
                 onClick={() => {
                   setRevealPassword(!revealPassword);
                 }}
@@ -161,7 +169,7 @@ function LoginForm({ setLogIn }: ILoginForm) {
               </div>
             </div>
           </div>
-          <div className="flex gap-1 mb-3">
+          <div className="flex gap-1 mb-3 ">
             <input type="checkbox" id="termsOfUse" className="w-7" />
             <label htmlFor="termsOfUse" className="text-sm ">
               Remember Me

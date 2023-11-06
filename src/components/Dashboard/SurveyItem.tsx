@@ -142,14 +142,19 @@ function SurveyItem({
           <div
             className="w-8 h-8 border border-slate-400 flex justify-center items-center rounded-xl hover:border-green-600 hover:text-green-600 dark:hover:border-cyan-600 dark:hover:text-cyan-600 cursor-pointer"
             onClick={() => setSurveyStatus((prevState) => !prevState)}
+            title={surveyStatus ? "Unlock" : "Lock"}
           >
             <FontAwesomeIcon icon={surveyStatus ? faLock : faUnlock} />
           </div>
-          <div className="w-8 h-8 border border-slate-400 flex justify-center items-center rounded-xl hover:border-green-600 hover:text-green-600 dark:hover:border-cyan-600 dark:hover:text-cyan-600 cursor-pointer">
+          <div
+            className="w-8 h-8 border border-slate-400 flex justify-center items-center rounded-xl hover:border-green-600 hover:text-green-600 dark:hover:border-cyan-600 dark:hover:text-cyan-600 cursor-pointer"
+            title="Edit"
+          >
             <FontAwesomeIcon icon={faEdit} />
           </div>
           <div
             className="w-8 h-8 border border-slate-400 flex justify-center items-center rounded-xl hover:border-green-600 hover:text-green-600 dark:hover:border-cyan-600 dark:hover:text-cyan-600 cursor-pointer"
+            title="Share"
             onClick={() => {
               navigator.clipboard.writeText(`https://surveyconnect-frontend.onrender.com/#/surveydetail/${_id}`);
               triggerToast();
@@ -161,6 +166,7 @@ function SurveyItem({
         <div className="hidden lg:flex md:items-center">
           <div
             className="w-8 h-8 border border-slate-400 flex justify-center items-center rounded-xl hover:text-slate-200 hover:bg-red-300 hover:border-red-300 cursor-pointer"
+            title={"Delete"}
             onClick={async () => {
               console.log("deleting");
               const result = await DeleteSurvey(_id);
