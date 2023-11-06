@@ -4,7 +4,7 @@ import SurveyList from "../components/Dashboard/SurveyList";
 import { useFetch } from "../util/useFetch";
 import { useEffect } from "react";
 import { USER_SURVEY_API } from "../API/Api";
-// const USER_SURVEY_API = "http://localhost:5000/api/user/surveys/";
+// const USER_SURVEY_API = "http://localhost:5000/api/user/surveys";
 interface SurveyList {
   surveys: SurveyItem[];
 }
@@ -44,6 +44,7 @@ function Dashboard() {
   async function DeleteSurvey(id: string): Promise<boolean> {
     const token = localStorage.getItem("token");
     try {
+      console.log(`${USER_SURVEY_API}${id}`);
       const res = await fetch(`${USER_SURVEY_API}/${id}`, {
         method: "DELETE",
         headers: {

@@ -202,6 +202,8 @@ function SurveyItem({
               id={_id}
               subMenuToggled={subMenuToggled}
               triggerToast={triggerToast}
+              DeleteSurvey={DeleteSurvey}
+              SetSurvey={SetSurvey}
             ></MobileSurveyListItemSubMenu>
           </div>
         </div>
