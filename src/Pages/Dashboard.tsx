@@ -42,25 +42,30 @@ function Dashboard() {
     }
   });
   async function DeleteSurvey(id: string): Promise<boolean> {
-    const token = localStorage.getItem("token");
-    try {
-      console.log(`${USER_SURVEY_API}${id}`);
-      const res = await fetch(`${USER_SURVEY_API}/${id}`, {
-        method: "DELETE",
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      });
-      const message = await res.json();
-      if (res.status === 200) {
-        console.info(message);
-        return true;
-      } else {
-        console.error(message);
+    const confirm = window.confirm("Are you sure you want to delete this survey? Deleted survey cannot be retrieved.");
+    if (confirm) {
+      const token = localStorage.getItem("token");
+      try {
+        console.log(`${USER_SURVEY_API}${id}`);
+        const res = await fetch(`${USER_SURVEY_API}/${id}`, {
+          method: "DELETE",
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        });
+        const message = await res.json();
+        if (res.status === 200) {
+          console.info(message);
+          return true;
+        } else {
+          console.error(message);
+          return false;
+        }
+      } catch (e) {
+        console.log(e);
         return false;
       }
-    } catch (e) {
-      console.log(e);
+    } else {
       return false;
     }
   }

@@ -67,7 +67,7 @@ function SurveyItem({
 
   return (
     <div
-      className="my-5 bg-slate-100 shadow-xl dark:bg-slate-900 rounded-xl py-5 px-4 "
+      className="my-5 bg-slate-100 shadow-xl dark:bg-slate-900 rounded-xl py-5 px-4"
       onClick={() => {
         if (subMenuToggled) {
           setSubmenuToggled(false);
@@ -190,22 +190,21 @@ function SurveyItem({
             <FontAwesomeIcon icon={faTrash} />
           </div>
         </div>
+
         <div
-          className="cursor-pointer lg:hidden block relative"
+          className="cursor-pointer lg:hidden block relative "
           onClick={() => {
             setSubmenuToggled((prevState) => !prevState);
           }}
         >
           <FontAwesomeIcon icon={faEllipsisVertical} fontSize={18} />
-          <div>
-            <MobileSurveyListItemSubMenu
-              id={_id}
-              subMenuToggled={subMenuToggled}
-              triggerToast={triggerToast}
-              DeleteSurvey={DeleteSurvey}
-              SetSurvey={SetSurvey}
-            ></MobileSurveyListItemSubMenu>
-          </div>
+          <MobileSurveyListItemSubMenu
+            id={_id}
+            subMenuToggled={subMenuToggled}
+            triggerToast={triggerToast}
+            DeleteSurvey={DeleteSurvey}
+            SetSurvey={SetSurvey}
+          ></MobileSurveyListItemSubMenu>
         </div>
       </div>
     </div>
